@@ -1,0 +1,16 @@
+.container {
+  text-align: center;
+  font-size: 18px;
+}
+
+.container .mainTitle {
+  color: blue;
+  font-size: 2em;
+}
+
+.container .msgTitle {
+  color: #ff6b6b;
+  font-size: 2em;
+  font-family: 'Tangerine', serif;
+  text-decoration: underline;
+}

@@ -1,3 +1,8 @@
 .container {
+	font-size: 18px;
+}
+
+.mainTitle {
+	font-size: 2.5em;
 	color: gray;
 }

@@ -1,0 +1,18 @@
+
+
+.container {
+	text-align: center;
+	font-size: 18px;
+	.mainTitle {
+		color: blue;
+		font-size: 2em;
+	}
+
+	.msgTitle {
+		color: hsl(0, 100%, 71%);
+		font-size: 2em;
+		font-family: 'Tangerine', serif;
+		text-decoration: underline;
+	}
+}
+
