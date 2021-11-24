@@ -1,0 +1,32 @@
+.btnBlock {
+	display: flex;
+	height: 40px;
+	justify-content: center;
+
+}
+
+button.toggle{
+	font-size: 16px;
+	color: #fff;
+	border-radius: 20%;
+	padding: 5px;
+}
+
+button.plus {
+	background-color: hsl(188, 56%, 23%);
+	color: #fff;
+	font-size: 30px;
+	text-align: center;
+	width: 30px;
+	border-radius: 20%;
+	padding: 3px;
+}
+button.minus {
+	background: hsl(344, 100%, 54%);
+	color: #fff;
+	font-size: 30px;
+	width: 30px;
+	border-radius: 20%;
+	padding: 3px;
+}
+
