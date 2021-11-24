@@ -1,0 +1,18 @@
+.containerCounter {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	width: 200px;
+	border: 1px solid #000;
+	border-radius: 20px;
+	text-align: center;
+	padding: 10px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+	.mainTitle {
+		color: hsl(215, 50%, 23%);
+		text-align: center;
+	}
+	.counter {
+		margin-bottom: 10px;
+	}
+}
