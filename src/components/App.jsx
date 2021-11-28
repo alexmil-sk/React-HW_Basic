@@ -4,14 +4,7 @@ import Messages from './Messages/Messages.jsx';
 
 class App extends React.Component {
 	state = {
-		messages: [
-			{
-				id: "user1",
-				title: "Message Title",
-				body: "I'm the first massage",
-				image: ""
-			},
-		],
+		messages: [],
 	};
 
 	render() {
