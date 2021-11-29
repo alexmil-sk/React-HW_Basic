@@ -1,0 +1,12 @@
+.container {
+	font-size: 18px;
+	display: flex;
+	justify-content: center;
+}
+
+.mainTitle {
+	font-size: 2.5em;
+	color: gray;
+	text-align: center;
+}
+

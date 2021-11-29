@@ -1,0 +1,89 @@
+.container {
+	text-align: center;
+	font-size: 18px;
+	border: 1px solid gray;
+	padding: 20px;
+	margin-left: 15px;;
+}
+.mainTitle {
+		color: blue;
+		font-size: 2em;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+}
+
+.formElem {
+	margin-top: 15px;
+}
+
+.btn {
+	background: hsl(174, 62%, 20%);
+	color: #fff;
+	margin-top: 15px;
+}
+
+
+/*//!---------------------------------------------------------------*/
+
+.userMsgContainer {
+	width: 600px;
+	margin: 0 auto;
+}
+
+.userMsg {
+	display: flex;
+	flex-direction: column;
+}
+
+
+
+.msgForm {
+	display: flex;
+	align-items: center;
+	height: auto;
+	box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+	padding: 15px;
+	margin: 15px 0;
+	border-radius: 30px;
+}
+
+.msgContent {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+}
+
+.msgId {
+	display: flex;
+	flex: 0 0 100px;
+	flex-direction: column;
+	align-self: flex-start;
+}
+
+.msgtext {
+	flex: 0 0 75%;
+}
+
+.msgTitle {
+	color: hsl(0, 100%, 71%);
+	font-size: 2em;
+	font-family: 'Tangerine', serif;
+	text-decoration: underline;
+}
+
+.msgImg {
+	width: 100px;
+}
+
+.delBtn {
+	flex: 0 0 40px;
+	background: red;
+	font-size: 30px;
+	color: #fff;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+}
