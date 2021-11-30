@@ -1,0 +1,44 @@
+
+
+.btnAnimated-enter {
+	opacity: 0;
+	background: red;
+}
+
+.btnAnimated-enter-active {
+	opacity: 1;
+	transition: opacity 2000ms ease-out;
+	;
+}
+
+.btnAnimated-exit {
+	box-shadow: 0 0 30px 5px hsl(355, 78%, 56%);
+	opacity: 1;
+}
+
+.btnAnimated-exit-active {
+	opacity: 0;
+	transition: opacity 500ms ease-in;
+}
+
+/*,---------------------------------------------*/
+
+.msgUseAnimated-enter {
+	opacity: 0;
+}
+
+.msgUseAnimated-enter-active {
+	opacity: 1;
+	transition: opacity 2000ms ease-out;
+	;
+}
+
+.msgUseAnimated-exit {
+	box-shadow: 0 0 30px 5px hsl(355, 78%, 56%);
+	opacity: 1;
+}
+
+.msgUseAnimated-exit-active {
+	opacity: 0;
+	transition: opacity 500ms ease-in; 
+}
