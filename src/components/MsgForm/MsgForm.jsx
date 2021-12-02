@@ -55,14 +55,14 @@ function MsgForm(props) {
 		);
 	}
 
-	useEffect(() => {
-		const timer = setTimeout(() => {
-			const arrKey = msgSubmit.map(item => item.id)
-			props.callBot(arrKey[0]);
-			//arrKey.map(key => props.callBot(key));
-		}, 1500)
-		return () => { clearTimeout(timer) };
-	}, [msgSubmit])
+	// useEffect(() => {
+	// 	const timer = setTimeout(() => {
+	// 		const arrKey = msgSubmit.map(item => item.id)
+	// 		props.callBot(arrKey[0]);
+	// 		//arrKey.map(key => props.callBot(key));
+	// 	}, 1500)
+	// 	return () => { clearTimeout(timer) };
+	// }, [msgSubmit])
 
 
 	const delSubMsgs = useCallback((id) => {
