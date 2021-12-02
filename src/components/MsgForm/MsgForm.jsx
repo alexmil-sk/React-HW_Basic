@@ -55,6 +55,45 @@ function MsgForm(props) {
 		);
 	}
 
+	//*=========================================================
+
+	// useEffect(() => {
+
+	// 	//if (msgSubmit.length === 0) { return; }
+
+	// 	const lastUser = msgSubmit.map(item => item.id)
+
+	// 	if (lastUser[0] === `info-bot`) {
+	// 		console.log(lastUser[0]);
+	// 		return;
+	// 	}
+
+
+	// 	if (lastUser[0] === 'user') {
+	// 		console.log(lastUser[0]);
+	// 		setMsgSubmit((msgSubmit) => {
+	// 			const newMsgSubmit = [...msgSubmit];
+	// 			newMsgSubmit.unshift({
+	// 				id: `info-bot`,
+	// 				title: 'I n f o B o t',
+	// 				body: `Hi, ** ${lastUser[0]} ** I'm Botty around here!`,
+	// 				image: 'https://st4.depositphotos.com/20523700/37870/v/1600/depositphotos_378706342-stock-illustration-vector-illustration-robot-icon.jpg'
+	// 			})
+	// 			console.log(newMsgSubmit);
+	// 			return newMsgSubmit;
+	// 		})
+	// 		//return;
+	// 	}
+
+
+	// }, [msgSubmit]);
+
+
+
+
+
+	//,=======================================================
+
 	// useEffect(() => {
 	// 	const timer = setTimeout(() => {
 	// 		const arrKey = msgSubmit.map(item => item.id)
@@ -63,6 +102,8 @@ function MsgForm(props) {
 	// 	}, 1500)
 	// 	return () => { clearTimeout(timer) };
 	// }, [msgSubmit])
+
+	//,============================================================
 
 
 	const delSubMsgs = useCallback((id) => {
@@ -76,42 +117,42 @@ function MsgForm(props) {
 	return (
 		<div className={classes.container}>
 			<h2 className="mainTitle">Message Form</h2>
-				<form onSubmit={onSubmitForm} className={classes.form}>
-						<input
-							className={classes.formElem}
-							type="text"
-							name="id"
-							onChange={onChangeId}
-							placeholder="User's name"
-							value={valueId}
-						/>
-						<input
-							className={classes.formElem}
-							type="text"
-							name="image"
-							onChange={onChangeImage}
-							placeholder="Users's avatar http://....."
-							value={valueImage}
-						/>
-						<input
-							className={classes.formElem}
-							type="text"
-							name="title"
-							onChange={onChangeTitle}
-							placeholder="Message's title"
-							value={valueTitle}
-						/>
-						<textarea
-							className={classes.formElem}
-							name="body"
-							cols="30"
-							rows="10"
-							onChange={onChangeBody}
-							placeholder="Message's text"
-							value={valueBody}
-						/>
-					<button className={classes.btn}>Send Message</button>
-				</form>
+			<form onSubmit={onSubmitForm} className={classes.form}>
+				<input
+					className={classes.formElem}
+					type="text"
+					name="id"
+					onChange={onChangeId}
+					placeholder="User's name"
+					value={valueId}
+				/>
+				<input
+					className={classes.formElem}
+					type="text"
+					name="image"
+					onChange={onChangeImage}
+					placeholder="Users's avatar http://....."
+					value={valueImage}
+				/>
+				<input
+					className={classes.formElem}
+					type="text"
+					name="title"
+					onChange={onChangeTitle}
+					placeholder="Message's title"
+					value={valueTitle}
+				/>
+				<textarea
+					className={classes.formElem}
+					name="body"
+					cols="30"
+					rows="10"
+					onChange={onChangeBody}
+					placeholder="Message's text"
+					value={valueBody}
+				/>
+				<button className={classes.btn}>Send Message</button>
+			</form>
 			<div className={classes.userMsgContainer}>
 				<div className={classes.userMsg}>
 					<TransitionGroup component="div">
