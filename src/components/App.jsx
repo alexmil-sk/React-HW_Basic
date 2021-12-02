@@ -62,11 +62,11 @@ function App() {
 		<div>
 			<h1 className={classes.mainTitle}>Main Title React App</h1>
 			<div className={classes.container}>
-				<Messages
+				{/* <Messages
 					stateMsgs={stateMsgs}
 					addUsersMsgs={addUsersMsgs}
 					delUsersMsgs={delUsersMsgs}
-				/>
+				/> */}
 				<MsgForm
 					callBot={callBot}
 					delUsersMsgs={delUsersMsgs}
