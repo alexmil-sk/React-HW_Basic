@@ -6,8 +6,9 @@
 
 }
 .mainTitle {
-		color: blue;
-		font-size: 2em;
+	font-size: 2.5em;
+	color: gray;
+	text-align: center;
 }
 
 .form {

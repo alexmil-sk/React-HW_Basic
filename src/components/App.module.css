@@ -1,8 +1,26 @@
-.container {
+.wrapper {
 	font-size: 18px;
 	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+}
+.container1,
+.container2 {
+	flex-direction: column;
 	justify-content: center;
 }
+
+.container1 {
+	/* background: #fff; */
+	background: #fff;
+	width: 44%;
+}
+.container2 {
+	/* background: #fff; */
+	background: #fff;
+}
+
 
 .mainTitle {
 	font-size: 2.5em;

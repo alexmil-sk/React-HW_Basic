@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import classes from './MsgForm.module.css';
-import './MsgFormAnime.css'
+import './MsgFormAnime.css';
+import { styled } from '@mui/material/styles';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { TextField, TextareaAutosize, Container, Box, Avatar, Typography, Button, Badge } from '@mui/material';
 import MessageIcon from '@mui/icons-material/Message';
@@ -68,7 +69,7 @@ function MsgForm(props) {
 
 		const lastUser = msgSubmit.map(item => item.id)
 
-		if (lastUser[0] === `info-bot`) {
+		if (lastUser[0] === 'info-bot' || lastUser[0] === 'sckeleton') {
 			return;
 		}
 		const timer = setTimeout(() => {
@@ -92,7 +93,7 @@ function MsgForm(props) {
 					const newMsgSubmit = [...msgSubmit];
 					newMsgSubmit.unshift({
 						idx: Date.now(),
-						id: 'info-bot',
+						id: 'sckeleton',
 						title: 'I n f o B o t',
 						body: `Hi, **${lastUser[0]}** You are not a HUMAN! Man, if you wonna be a HUMAN sign your message as "USER"`,
 						image: 'https://avatars.mds.yandex.net/i?id=d5cbec0c701f73502694dd515466cb5e-3070965-images-thumbs&ref=rim&n=33&w=225&h=225'
@@ -121,11 +122,12 @@ function MsgForm(props) {
 
 	return (
 		<>
-			<Container maxWidth="sm">
+			<Container sx={{padding: '0!important', ml: 1, mr: 1}}>
 				<Box sx={{ width: '600px', mb: '25px' }}>
 					<div className={classes.container}>
 						<Typography
 							variant="h4"
+							className={classes.mainTitle}
 						>Message Form</Typography>
 						<form onSubmit={onSubmitForm} className={classes.form}>
 							<TextField
