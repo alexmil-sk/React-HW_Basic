@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import classes from './MsgForm.module.css';
 import './MsgFormAnime.css'
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
@@ -11,11 +11,12 @@ function MsgForm(props) {
 
 	const [msgSubmit, setMsgSubmit] = useState([]);
 
-
 	const [valueId, setValueId] = useState('');
 	const [valueTitle, setValueTitle] = useState('');
 	const [valueBody, setValueBody] = useState('');
 	const [valueImage, setValueImage] = useState('');
+
+	const inputIdRef = useRef(null);
 
 
 
@@ -50,7 +51,7 @@ function MsgForm(props) {
 
 				return newMsgSubmit;
 			})
-		} else {alert('Заполните, пожалуйста, все поля сообщения!')}
+		} else { alert('Заполните, пожалуйста, все поля сообщения!') }
 
 
 		return (
@@ -105,6 +106,9 @@ function MsgForm(props) {
 
 	}, [msgSubmit]);
 
+	useEffect(() => {
+		inputIdRef.current?.focus();
+	}, [valueId]);
 
 	const delSubMsgs = useCallback((idx) => {
 		console.log(idx);
@@ -121,11 +125,11 @@ function MsgForm(props) {
 				<Box sx={{ width: '600px', mb: '25px' }}>
 					<div className={classes.container}>
 						<Typography
-							//className="mainTitle"
 							variant="h4"
 						>Message Form</Typography>
 						<form onSubmit={onSubmitForm} className={classes.form}>
 							<TextField
+								inputRef={inputIdRef}
 								className={classes.formElem}
 								type="text"
 								name="id"
@@ -169,19 +173,19 @@ function MsgForm(props) {
 								style={{ height: 100 }}
 								value={valueBody}
 							/>
-								<Button
-									onClick={onSubmitForm}
-									variant="contained"
-									//endIcon={<SendIcon />}
-									className={classes.btn}
-									color="info"
-									size="large"
-									sx={{ width: 80, height: 80, margin: '15px auto', borderRadius: '50%', boxShadow: '0 0 10px 5px #07233E' }}
+							<Button
+								onClick={onSubmitForm}
+								variant="contained"
+								//endIcon={<SendIcon />}
+								className={classes.btn}
+								color="info"
+								size="large"
+								sx={{ width: 80, height: 80, margin: '15px auto', borderRadius: '50%', boxShadow: '0 0 10px 5px #07233E' }}
 							>
-								<Badge overlap="circular" color="secondary" sx={{ color: 'white'}} badgeContent={msgSubmit.length}>
-									<MessageIcon sx={{ fontSize: 50  }} />
+								<Badge overlap="circular" color="secondary" sx={{ color: 'white' }} badgeContent={msgSubmit.length}>
+									<MessageIcon sx={{ fontSize: 50 }} />
 								</Badge>
-								</Button>
+							</Button>
 						</form>
 						<div className={classes.userMsgContainer}>
 							<div className={classes.userMsg}>
