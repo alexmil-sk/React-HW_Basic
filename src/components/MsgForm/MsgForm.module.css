@@ -1,9 +1,9 @@
 .container {
 	text-align: center;
 	font-size: 18px;
-	border: 1px solid gray;
+	border: 1px solid #1976D2;
 	padding: 20px;
-	margin-left: 15px;;
+
 }
 .mainTitle {
 		color: blue;
@@ -43,12 +43,13 @@
 
 .msgForm {
 	display: flex;
+	width: 528px;
 	align-items: center;
 	height: auto;
-	box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5)!important;
 	padding: 15px;
-	margin: 15px 0;
-	border-radius: 30px;
+	margin: 25px 0;
+	border-radius: 30px!important;
 }
 
 .msgContent {
@@ -58,14 +59,12 @@
 }
 
 .msgId {
-	display: flex;
-	flex: 0 0 100px;
 	flex-direction: column;
 	align-self: flex-start;
 }
 
 .msgtext {
-	flex: 0 0 75%;
+	flex: 0 0 70%;
 }
 
 .msgTitle {
@@ -76,7 +75,8 @@
 }
 
 .msgImg {
-	width: 100px;
+	width: 70px;
+	text-align: center!important;
 }
 
 .delBtn {
@@ -87,4 +87,5 @@
 	border-radius: 50%;
 	width: 40px;
 	height: 40px;
+	cursor: pointer!important;
 }

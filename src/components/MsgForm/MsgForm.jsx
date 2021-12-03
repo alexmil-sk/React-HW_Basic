@@ -2,6 +2,10 @@ import React, { useState, useCallback, useEffect } from 'react';
 import classes from './MsgForm.module.css';
 import './MsgFormAnime.css'
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { TextField, TextareaAutosize, Container, Box, Avatar, Typography, Button, Badge } from '@mui/material';
+import MessageIcon from '@mui/icons-material/Message';
+
+
 
 function MsgForm(props) {
 
@@ -46,7 +50,8 @@ function MsgForm(props) {
 
 				return newMsgSubmit;
 			})
-		}
+		} else {alert('Заполните, пожалуйста, все поля сообщения!')}
+
 
 		return (
 			setValueId(''),
@@ -67,7 +72,6 @@ function MsgForm(props) {
 		}
 		const timer = setTimeout(() => {
 			if (lastUser[0] === 'user') {
-				console.log(lastUser[0]);
 				setMsgSubmit(() => {
 					const newMsgSubmit = [...msgSubmit];
 					newMsgSubmit.unshift({
@@ -75,10 +79,12 @@ function MsgForm(props) {
 						id: 'info-bot',
 						title: 'I n f o B o t',
 						body: `Hi, ** ${lastUser[0]} ** I'm Botty around here!`,
-						image: 'https://st4.depositphotos.com/20523700/37870/v/1600/depositphotos_378706342-stock-illustration-vector-illustration-robot-icon.jpg'
+						image: 'https://img2.freepng.ru/20180804/pso/kisspng-mobile-robot-stock-photography-image-illustration-%D8%AF%D8%B1%D8%A8%D8%A7%D8%B1%D9%87-%D9%85%D8%A7-%D8%B4%D8%B1%DA%A9%D8%AA-%D8%A2%D8%B1%D8%B3%D8%B3-5b65f6073773d3.7988520615334087752271.jpg'
 					})
 					return newMsgSubmit;
 				})
+				return;
+			} else if (lastUser[0] === '') {
 				return;
 			} else {
 				setMsgSubmit(() => {
@@ -88,7 +94,7 @@ function MsgForm(props) {
 						id: 'info-bot',
 						title: 'I n f o B o t',
 						body: `Hi, **${lastUser[0]}** You are not a HUMAN! Man, if you wonna be a HUMAN sign your message as "USER"`,
-						image: 'https://st4.depositphotos.com/20523700/37870/v/1600/depositphotos_378706342-stock-illustration-vector-illustration-robot-icon.jpg'
+						image: 'https://avatars.mds.yandex.net/i?id=d5cbec0c701f73502694dd515466cb5e-3070965-images-thumbs&ref=rim&n=33&w=225&h=225'
 					});
 					return newMsgSubmit;
 				})
@@ -110,78 +116,118 @@ function MsgForm(props) {
 
 
 	return (
-		<div className={classes.container}>
-			<h2 className="mainTitle">Message Form</h2>
-			<form onSubmit={onSubmitForm} className={classes.form}>
-				<input
-					className={classes.formElem}
-					type="text"
-					name="id"
-					onChange={onChangeId}
-					placeholder="User's name"
-					value={valueId}
-				/>
-				<input
-					className={classes.formElem}
-					type="text"
-					name="image"
-					onChange={onChangeImage}
-					placeholder="Users's avatar http://....."
-					value={valueImage}
-				/>
-				<input
-					className={classes.formElem}
-					type="text"
-					name="title"
-					onChange={onChangeTitle}
-					placeholder="Message's title"
-					value={valueTitle}
-				/>
-				<textarea
-					className={classes.formElem}
-					name="body"
-					cols="30"
-					rows="10"
-					onChange={onChangeBody}
-					placeholder="Message's text"
-					value={valueBody}
-				/>
-				<button className={classes.btn}>Send Message</button>
-			</form>
-			<div className={classes.userMsgContainer}>
-				<div className={classes.userMsg}>
-					<TransitionGroup component="span">
-						{msgSubmit.map((msg) => {
-							return (
-								<CSSTransition
-									key={msg.idx}
-									timeout={1000}
-									classNames="msgUseAnimated"
-								>
-									<div key={msg.idx} className={classes.msgForm}>
-										<div className={classes.msgContent}>
-											<div className={classes.msgId}>
-												<img src={msg.image} alt={msg.id} className={classes.msgImg} />
-												<span>{msg.id}</span>
-											</div>
-											<div className={classes.msgtext}>
-												<span className={classes.msgTitle}>{msg.title}</span>
-												<p>{msg.body}</p>
-											</div>
-											<button
-												className={classes.delBtn}
-												onClick={() => delSubMsgs(msg.idx)}
-											>&times;</button>
-										</div>
-									</div>
-								</CSSTransition>
-							)
-						})
-						}
-					</TransitionGroup>
-				</div>
-			</div>
-		</div>
+		<>
+			<Container maxWidth="sm">
+				<Box sx={{ width: '600px', mb: '25px' }}>
+					<div className={classes.container}>
+						<Typography
+							//className="mainTitle"
+							variant="h4"
+						>Message Form</Typography>
+						<form onSubmit={onSubmitForm} className={classes.form}>
+							<TextField
+								className={classes.formElem}
+								type="text"
+								name="id"
+								onChange={onChangeId}
+								variant="outlined"
+								margin="dense"
+								color="warning"
+								label="User's name"
+								value={valueId}
+							/>
+							<TextField
+								className={classes.formElem}
+								type="text"
+								name="image"
+								onChange={onChangeImage}
+								variant="filled"
+								size="normal"
+								margin="dense"
+								color="warning"
+								label="Users's avatar http://....."
+								value={valueImage}
+							/>
+							<TextField
+								className={classes.formElem}
+								type="text"
+								name="title"
+								onChange={onChangeTitle}
+								variant="outlined"
+								margin="dense"
+								color="warning"
+								label="Message's title"
+								value={valueTitle}
+							/>
+							<TextareaAutosize
+								className={classes.formElem}
+								name="body"
+								maxRows={10}
+								aria-label="maximum height"
+								onChange={onChangeBody}
+								placeholder="Message's text"
+								style={{ height: 100 }}
+								value={valueBody}
+							/>
+								<Button
+									onClick={onSubmitForm}
+									variant="contained"
+									//endIcon={<SendIcon />}
+									className={classes.btn}
+									color="info"
+									size="large"
+									sx={{ width: 80, height: 80, margin: '15px auto', borderRadius: '50%', boxShadow: '0 0 10px 5px #07233E' }}
+							>
+								<Badge overlap="circular" color="secondary" sx={{ color: 'white'}} badgeContent={msgSubmit.length}>
+									<MessageIcon sx={{ fontSize: 50  }} />
+								</Badge>
+								</Button>
+						</form>
+						<div className={classes.userMsgContainer}>
+							<div className={classes.userMsg}>
+								<TransitionGroup component="span">
+									{msgSubmit.map((msg) => {
+										return (
+											<CSSTransition
+												key={msg.idx}
+												timeout={1000}
+												classNames="msgUseAnimated"
+											>
+												<div
+													key={msg.idx}
+													className={classes.msgForm}
+													severity="info"
+													variant="outlined"
+												>
+													<div className={classes.msgContent}>
+														<div className={classes.msgId}>
+															<Avatar
+																src={msg.image} alt={msg.id} className={classes.msgImg}
+																sx={{ width: 100, height: 100, border: '1px solid', boxShadow: '0 0 10px 5px rgba(0, 0, 0, 0.5)' }}
+															/>
+															<span>{msg.id}</span>
+														</div>
+														<div className={classes.msgtext}>
+															<span className={classes.msgTitle}>{msg.title}</span>
+															<p>{msg.body}</p>
+														</div>
+														<button
+															className={classes.delBtn}
+															onClick={() => delSubMsgs(msg.idx)}
+														>&times;</button>
+													</div>
+												</div>
+											</CSSTransition>
+										)
+									})
+									}
+								</TransitionGroup>
+							</div>
+						</div>
+					</div>
+				</Box>
+			</Container>
+		</>
 	)
 }
 
