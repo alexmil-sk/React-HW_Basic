@@ -126,6 +126,9 @@ const getMode = (mode) => ({
 					styleOverrides: {
 						root: {
 							background: '#ccc',
+						},
+						label: {
+							color: '#ccc'
 						}
 					}
 				},
@@ -155,21 +158,6 @@ const getMode = (mode) => ({
 						}
 					}
 				},
-		//MuiButton: {
-		//	styleOverrides: {
-		//		root: {
-		//			background: '#e87cfd9c',
-		//		}
-		//	}
-		//}
-
-		//MuiSvgIcon: {
-		//	styleOverrides: {
-		//		root: {
-		//			color: '#fff',
-		//		},
-		//	}
-		//}
 			}),
 	}
 });

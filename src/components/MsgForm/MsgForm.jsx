@@ -3,7 +3,7 @@ import classes from './MsgForm.module.css';
 import './MsgFormAnime.css';
 import { styled } from '@mui/material/styles';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { TextField, Container, Box, Avatar, Typography, Button, Badge } from '@mui/material';
+import { TextField, Container, Box, Avatar, Typography, Button, Badge, ListItem, List } from '@mui/material';
 import MessageIcon from '@mui/icons-material/Message';
 
 
@@ -197,7 +197,7 @@ function MsgForm(props) {
 							</Button>
 						</form>
 						<div className={classes.userMsgContainer}>
-							<div className={classes.userMsg}>
+							<List className={classes.userMsg}>
 								<TransitionGroup component="span">
 									{msgSubmit.map((msg) => {
 										return (
@@ -206,7 +206,7 @@ function MsgForm(props) {
 												timeout={1000}
 												classNames="msgUseAnimated"
 											>
-												<div
+												<ListItem
 													key={msg.idx}
 													className={classes.msgForm}
 													severity="info"
@@ -218,24 +218,24 @@ function MsgForm(props) {
 																src={msg.image} alt={msg.id} className={classes.msgImg}
 																sx={{ width: 100, height: 100, border: '1px solid', boxShadow: '0 0 10px 5px rgba(0, 0, 0, 0.5)' }}
 															/>
-															<span>{msg.id}</span>
+															<Typography fontSize="large" sx={{textAlign: 'center'}}>{msg.id}</Typography>
 														</div>
 														<div className={classes.msgtext}>
 															<span className={classes.msgTitle}>{msg.title}</span>
-															<p>{msg.body}</p>
+															<Typography fontSize="large">{msg.body}</Typography>
 														</div>
 														<button
 															className={classes.delBtn}
 															onClick={() => delSubMsgs(msg.idx)}
 														>&times;</button>
 													</div>
-												</div>
+												</ListItem>
 											</CSSTransition>
 										)
 									})
 									}
 								</TransitionGroup>
-							</div>
+							</List>
 						</div>
 					</div>
 				</Box>

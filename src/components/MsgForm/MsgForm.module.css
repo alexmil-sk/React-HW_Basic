@@ -40,8 +40,6 @@
 	flex-direction: column;
 }
 
-
-
 .msgForm {
 	display: flex;
 	width: 528px;
@@ -69,10 +67,13 @@
 }
 
 .msgTitle {
+	display: block;
 	color: hsl(0, 100%, 71%);
 	font-size: 2em;
 	font-family: 'Tangerine', serif;
 	text-decoration: underline;
+	text-align: center!important;
+	font-weight: 900;
 }
 
 .msgImg {
