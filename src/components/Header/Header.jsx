@@ -7,7 +7,7 @@ import MenuIconButton from '@mui/icons-material/Menu';
 
 function Header() {
 	return (
-		<AppBar position="static">
+		<AppBar position="static" color="secondary">
 			<Toolbar>
 				<IconButton color="inherit">
 					<MenuIconButton sx={{ fontSize: 40 }}/>

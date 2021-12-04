@@ -126,6 +126,7 @@ function MsgForm(props) {
 				<Box sx={{ width: '600px', mb: '25px' }}>
 					<div className={classes.container}>
 						<Typography
+							color="secondary"
 							variant="h4"
 							className={classes.mainTitle}
 						>Message Form</Typography>
@@ -138,7 +139,7 @@ function MsgForm(props) {
 								onChange={onChangeId}
 								variant="outlined"
 								margin="dense"
-								color="warning"
+								color="secondary"
 								label="User's name"
 								value={valueId}
 							/>
@@ -150,7 +151,8 @@ function MsgForm(props) {
 								variant="filled"
 								size="normal"
 								margin="dense"
-								color="warning"
+								//color="warning"
+								color="secondary"
 								label="Users's avatar http://....."
 								value={valueImage}
 							/>
@@ -161,18 +163,22 @@ function MsgForm(props) {
 								onChange={onChangeTitle}
 								variant="outlined"
 								margin="dense"
-								color="warning"
+								//color="warning"
+								color="secondary"
 								label="Message's title"
 								value={valueTitle}
 							/>
-							<TextareaAutosize
+							<TextField
+								multiline
+								margin="dense"
+								//defaultValue="Message's text"
+								color="secondary"
 								className={classes.formElem}
 								name="body"
-								maxRows={10}
-								aria-label="maximum height"
+								rows={3}
 								onChange={onChangeBody}
+								label="Message's text"
 								placeholder="Message's text"
-								style={{ height: 100 }}
 								value={valueBody}
 							/>
 							<Button
@@ -180,11 +186,12 @@ function MsgForm(props) {
 								variant="contained"
 								//endIcon={<SendIcon />}
 								className={classes.btn}
-								color="info"
+								//color="info"
+								color="secondary"
 								size="large"
 								sx={{ width: 80, height: 80, margin: '15px auto', borderRadius: '50%', boxShadow: '0 0 10px 5px #07233E' }}
 							>
-								<Badge overlap="circular" color="secondary" sx={{ color: 'white' }} badgeContent={msgSubmit.length}>
+								<Badge overlap="circular" color="info" sx={{ color: 'white' }} badgeContent={msgSubmit.length}>
 									<MessageIcon sx={{ fontSize: 50 }} />
 								</Badge>
 							</Button>

@@ -13,9 +13,10 @@ function Nav() {
 
 
 	return (
-		<Container className={classes.container}>
-			<Box sx={{ mb: '25px', border: '1px solid #1976D2', padding: '20px', margin: '0 7px' }}>
+		<Container className={classes.container} >
+			<Box sx={{ mb: '25px', padding: '20px', margin: '0 7px' }}>
 				<Typography
+					color="secondary"
 					variant="h4"
 					className={classes.mainTitle}
 				>
@@ -24,36 +25,34 @@ function Nav() {
 				<List dense={dense}>
 					{chatArray.map(item => {
 						return (
-							<>
-							<ListItem
-								key={item.id}
+							<div key={item.id}>
+								<ListItem
 									secondaryAction={
 										<IconButton  edge="end" aria-label="delete">
 											<DeleteTwoToneIcon
-												Outlined
 												fontSize="large"
 												color="secondary"
 											/>
 										</IconButton>
 									}
-							>
-									<ListItemAvatar>
-										<Avatar
-											src={item.image}
-											sx={{ width: 58, height: 58 }}
-										/>
-									</ListItemAvatar>
+								>
+								<ListItemAvatar>
+									<Avatar
+										src={item.image}
+										sx={{ width: 58, height: 58 }}
+									/>
+								</ListItemAvatar>
 									<ListItemText
 										primary={item.name}
-										secondary={item.id ? `id: ${item.id}` : null}
-								/>
+										secondary={item.id ? `ID: ${item.id}` : 'Введите ID'}
+									/>
 								
 							</ListItem>
 							<Divider
 									variant="inset"
 									sx={{color: '#666'}}
 								/>
-							</>
+							</div>
 						);
 					})
 					}
