@@ -46,7 +46,6 @@ function Nav() {
 										primary={item.name}
 										secondary={item.id ? `ID: ${item.id}` : 'Введите ID'}
 									/>
-								
 								</ListItem>
 								<Divider
 										variant="inset"

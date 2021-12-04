@@ -3,7 +3,7 @@ import classes from './MsgForm.module.css';
 import './MsgFormAnime.css';
 import { styled } from '@mui/material/styles';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { TextField, TextareaAutosize, Container, Box, Avatar, Typography, Button, Badge } from '@mui/material';
+import { TextField, Container, Box, Avatar, Typography, Button, Badge } from '@mui/material';
 import MessageIcon from '@mui/icons-material/Message';
 
 

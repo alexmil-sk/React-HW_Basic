@@ -24,7 +24,7 @@ function Header(props) {
 				>
 					<ChatIconButton sx={{ fontSize: 40 }}
 					/>
-					<props.ThemeToggle />
+					<props.SwitchLight />
 				</IconButton>
 			</Toolbar>
 		</AppBar>
