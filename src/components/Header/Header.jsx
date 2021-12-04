@@ -5,7 +5,7 @@ import MenuIconButton from '@mui/icons-material/Menu';
 
 
 
-function Header() {
+function Header(props) {
 	return (
 		<AppBar position="static" color="secondary">
 			<Toolbar>
@@ -24,6 +24,7 @@ function Header() {
 				>
 					<ChatIconButton sx={{ fontSize: 40 }}
 					/>
+					<props.ThemeToggle />
 				</IconButton>
 			</Toolbar>
 		</AppBar>

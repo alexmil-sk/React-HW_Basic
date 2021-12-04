@@ -47,10 +47,10 @@ function Nav() {
 										secondary={item.id ? `ID: ${item.id}` : 'Введите ID'}
 									/>
 								
-							</ListItem>
-							<Divider
-									variant="inset"
-									sx={{color: '#666'}}
+								</ListItem>
+								<Divider
+										variant="inset"
+										sx={{ color: '#666', mt: 1}}
 								/>
 							</div>
 						);
