@@ -3,7 +3,7 @@ import classes from './App.module.css';
 import Header from './Header/Header.jsx';
 import MsgForm from './MsgForm/MsgForm.jsx';
 import Nav from './Nav/Nav.jsx';
-import { Container, Box, Typography } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 
 
 function App() {
