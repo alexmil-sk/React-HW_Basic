@@ -122,7 +122,7 @@ function MsgForm(props) {
 
 	return (
 		<>
-			<Container sx={{padding: '0!important', ml: 1, mr: 1}}>
+			<Container sx={{ padding: '0!important', ml: 1, mr: 1 }}>
 				<Box sx={{ width: '600px', mb: '25px' }}>
 					<div className={classes.container}>
 						<Typography
@@ -218,7 +218,7 @@ function MsgForm(props) {
 																src={msg.image} alt={msg.id} className={classes.msgImg}
 																sx={{ width: 100, height: 100, border: '1px solid', boxShadow: '0 0 10px 5px rgba(0, 0, 0, 0.5)' }}
 															/>
-															<Typography fontSize="large" sx={{textAlign: 'center'}}>{msg.id}</Typography>
+															<Typography fontSize="large" sx={{ textAlign: 'center' }}>{msg.id}</Typography>
 														</div>
 														<div className={classes.msgtext}>
 															<span className={classes.msgTitle}>{msg.title}</span>

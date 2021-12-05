@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import classes from './Nav.module.css';
+import classes from './ListChats.module.css';
 import { List, ListItem, ListItemAvatar, ListItemText, Container, Box, Typography, Avatar, IconButton, Divider } from '@mui/material';
-import { styled } from '@mui/material/styles';
+//import { styled } from '@mui/material/styles';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
-import chatUsersArray from '../../source/db/chatDb.js';
+import chatUsersArray from '../../../source/db/chatDb.js';
 
-function Nav() {
+function ListChats() {
 
 
 	const [dense, setDense] = useState(true);
@@ -13,8 +13,14 @@ function Nav() {
 
 
 	return (
-		<nav>
+		<>
 			<Container className={classes.container} >
+				<Typography
+					color="secondary"
+					className={classes.mainTitle}
+					variant="h3"
+					sx={{ mt: 2, mb: 2 }}
+				>List of Chats</Typography>
 				<Box sx={{ mb: '25px', padding: '20px', margin: '0 7px' }}>
 					<Typography
 						color="secondary"
@@ -59,8 +65,8 @@ function Nav() {
 					</List>
 				</Box>
 			</Container>
-		</nav>
+		</>
 	)
 }
 
-export default Nav;
+export default ListChats;

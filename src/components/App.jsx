@@ -2,7 +2,9 @@ import React, { useMemo, useState } from 'react';
 import classes from './App.module.css';
 import Header from './Header/Header.jsx';
 import MsgForm from './MsgForm/MsgForm.jsx';
-import Nav from './Nav/Nav.jsx';
+import Comments from './Comments/Comments.jsx';
+import ListChats from './Chats/ListChats/ListChats.jsx';
+import Posts from './Posts/Posts.jsx';
 import { ThemeProvider, createTheme, Container, Typography, Box,} from '@mui/material';
 import { ToggleContext, getMode, SwitchLight } from '../myScripts/myScripts.js';
 
@@ -31,27 +33,10 @@ function App() {
 					<div
 						className={classes.wrapper}
 					>
-						<Box
-							sx={{ width: '45%' }}
-						//className={classes.container1}
-						>
-							<Typography
-								color="secondary"
-								className={classes.mainTitle}
-								variant="h3"
-								sx={{ mt: 2, mb: 2 }}
-							>List of Chats</Typography>
-							<Nav />
-						</Box>
-						<Box>
-							<Typography
-								color="secondary"
-								className={classes.mainTitle}
-								variant="h3"
-								sx={{ mt: 2, mb: 2 }}
-							>Chat for Students</Typography>
-							<MsgForm />
-						</Box>
+						<ListChats />
+						<MsgForm />
+						<Comments />
+						<Posts/>
 					</div>
 				</Container>
 			</ThemeProvider>
