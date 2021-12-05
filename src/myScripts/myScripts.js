@@ -148,7 +148,7 @@ export const getMode = (mode) => ({
 				MuiListItemText: {
 					styleOverrides: {
 						primary: {
-							fontSize: '1.1em',
+							fontSize: '1.2em',
 							fontWeight: 'bold',
 							textShadow: '1px 0 1px #000'
 						}

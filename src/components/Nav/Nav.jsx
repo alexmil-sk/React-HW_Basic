@@ -13,51 +13,53 @@ function Nav() {
 
 
 	return (
-		<Container className={classes.container} >
-			<Box sx={{ mb: '25px', padding: '20px', margin: '0 7px' }}>
-				<Typography
-					color="secondary"
-					variant="h4"
-					className={classes.mainTitle}
-				>
-					Users
-				</Typography>
-				<List dense={dense}>
-					{chatArray.map(item => {
-						return (
-							<div key={item.id}>
-								<ListItem
-									secondaryAction={
-										<IconButton  edge="end" aria-label="delete">
-											<DeleteTwoToneIcon
-												fontSize="large"
-												color="secondary"
+		<nav>
+			<Container className={classes.container} >
+				<Box sx={{ mb: '25px', padding: '20px', margin: '0 7px' }}>
+					<Typography
+						color="secondary"
+						variant="h4"
+						className={classes.mainTitle}
+					>
+						Users
+					</Typography>
+					<List dense={dense}>
+						{chatArray.map(item => {
+							return (
+								<div key={item.id}>
+									<ListItem
+										secondaryAction={
+											<IconButton edge="end" aria-label="delete">
+												<DeleteTwoToneIcon
+													fontSize="large"
+													color="secondary"
+												/>
+											</IconButton>
+										}
+									>
+										<ListItemAvatar>
+											<Avatar
+												src={item.image}
+												sx={{ width: 58, height: 58 }}
 											/>
-										</IconButton>
-									}
-								>
-								<ListItemAvatar>
-									<Avatar
-										src={item.image}
-										sx={{ width: 58, height: 58 }}
-									/>
-								</ListItemAvatar>
-									<ListItemText
-										primary={item.name}
-										secondary={item.id ? `ID: ${item.id}` : 'Введите ID'}
-									/>
-								</ListItem>
-								<Divider
+										</ListItemAvatar>
+										<ListItemText
+											primary={item.name}
+											secondary={item.id ? `ID: ${item.id}` : 'Введите ID'}
+										/>
+									</ListItem>
+									<Divider
 										variant="inset"
-										sx={{ color: '#666', mt: 1}}
-								/>
-							</div>
-						);
-					})
-					}
-				</List>
-			</Box>
-		</Container>
+										sx={{ color: '#666', mt: 1 }}
+									/>
+								</div>
+							);
+						})
+						}
+					</List>
+				</Box>
+			</Container>
+		</nav>
 	)
 }
 
