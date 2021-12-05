@@ -5,7 +5,7 @@ import MsgForm from './MsgForm/MsgForm.jsx';
 import Comments from './Comments/Comments.jsx';
 import ListChats from './Chats/ListChats/ListChats.jsx';
 import Posts from './Posts/Posts.jsx';
-import { ThemeProvider, createTheme, Container, Typography, Box,} from '@mui/material';
+import { ThemeProvider, createTheme, Container} from '@mui/material';
 import { ToggleContext, getMode, SwitchLight } from '../myScripts/myScripts.js';
 
 
