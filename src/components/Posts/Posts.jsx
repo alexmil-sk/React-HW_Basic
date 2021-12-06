@@ -10,11 +10,13 @@ function Posts() {
 		<Box>
 			<Typography sx={{ textAlign: 'center' }} variant="h1" color="secondary">Posts</Typography>
 			<ul>
-				<li key={Date.now()}>
-					{MOCK_POSTS.map((item) => (
+				
+				{MOCK_POSTS.map((item) => (
+					<li key={item.id}>
 						<Typography
 							variant="h6"
 							color="secondary"
+							
 						>
 							<NavLink className="link"
 								to={`/posts/${item.id}`}>
@@ -27,10 +29,9 @@ function Posts() {
 							</NavLink>
 							<hr />
 						</Typography>
+					</li>
 					))}
-				</li>
 			</ul>
-
 		</Box>
 	)
 }

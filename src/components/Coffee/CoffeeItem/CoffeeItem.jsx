@@ -4,8 +4,7 @@ import { NavLink} from 'react-router-dom';
 import { Box, Typography, IconButton } from '@mui/material';
 import MoreIcon from '@mui/icons-material/More';
 
-function CoffeeItem({ match }) {
-
+function CoffeeItem({match}) {
 
 	const [item, setItem] = useState([]);
 
@@ -26,7 +25,7 @@ function CoffeeItem({ match }) {
 		<Box>
 			<NavLink
 				className="link unactive"
-				to={`/`}>
+				to={`/coffee`}>
 				<IconButton color="secondary">
 					<MoreIcon fontSize="large" />
 				</IconButton>

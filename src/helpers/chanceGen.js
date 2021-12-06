@@ -14,7 +14,7 @@ export const createComment = () => ({
 export const createPost = () => {
 	const commentsCount = chance().integer({
 		min: 0,
-		max: 5
+		max: 10
 	});
 	return {
 		id: chance().fbid(),
@@ -24,7 +24,7 @@ export const createPost = () => {
 		}),
 		author: chance().name(),
 		title: chance().sentence(),
-		content: chance().paragraph({ sentences: 2 }),
+		content: chance().paragraph({ sentences: 5 }),
 		commentsCount,
 		comments: Array.from({
 			length: commentsCount

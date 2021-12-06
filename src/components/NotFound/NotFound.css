@@ -1,0 +1,31 @@
+.main {
+	display: block;
+	height: 500px;
+	color: white;
+	background: url('http://pixel-one.ru/uploads/posts/2017-10/1508524003_grumpy-cat.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+}
+
+.errorBtn {
+	background-color: coral!important;
+	opacity: 1;
+	position: absolute;
+	border-radius: 50%!important;
+	width: 87px;
+	height: 85px;
+	left: 33.5rem;
+	top: 24rem;
+	box-shadow: 0 0 25px 10px #000;
+}
+
+.errorBtn:hover { 
+	box-shadow: inset 0 0 20px 3px yellow;
+	transform: scale(1.2);
+	border: 1px solid yellow!important;
+}
+
+.errorBtn:active {
+	box-shadow: 0 0 25px 10px #000;
+}

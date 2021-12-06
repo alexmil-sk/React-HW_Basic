@@ -32,6 +32,7 @@ function Chats() {
 					<List dense={dense}>
 						{chatArray.map(item => {
 							return (
+
 								<div key={item.id}>
 									<ListItem
 										secondaryAction={
@@ -60,6 +61,7 @@ function Chats() {
 									/>
 								</div>
 							);
+							
 						})
 						}
 					</List>

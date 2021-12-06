@@ -1,7 +1,10 @@
 import React from 'react';
-import { useParams, Redirect, NavLink } from "react-router-dom";
+import './PostItem.css';
+import Comments from '../../Comments/Comments.jsx';
+import { useParams, Redirect, NavLink, Switch, Route } from "react-router-dom";
 import { Box, Typography, IconButton } from '@mui/material';
 import { MOCK_POSTS } from '../../../helpers/chanceGen.js';
+import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import MoreIcon from '@mui/icons-material/More';
 
 
@@ -17,12 +20,10 @@ function PostItem(props) {
 		return <Redirect to="/posts" />;
 	}
 
-	console.log(post);
-
 	return (
 		<Box>
 			<NavLink
-				className="link unactive"
+				className="commentLink"
 				to={`/posts`}>
 				<IconButton color="secondary">
 					<MoreIcon fontSize="large" />
@@ -42,6 +43,23 @@ function PostItem(props) {
 				<h4>DATE: {post.createAt}</h4>
 				<p>{post.content}</p>
 			</Typography>
+			<NavLink
+				className="link unactive"
+				to={`/posts/${postId}/comments`}>
+				<IconButton color="inherit">
+					<QuestionAnswerIcon fontSize="large" />
+				</IconButton>
+				<Typography
+					variant="h6"
+					color="secondary"
+					sx={{ display: 'inline-block' }}
+				>
+					READ COMMENTS
+				</Typography>
+			</NavLink>
+			<Switch>
+				<Route path="/posts/:postId/comments" component={Comments} />
+			</Switch>
 		</Box>
 	)
 }
