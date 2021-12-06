@@ -1,10 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import classes from './App.module.css';
 import Header from './Header/Header.jsx';
-import MsgForm from './MsgForm/MsgForm.jsx';
-import Comments from './Comments/Comments.jsx';
-import ListChats from './Chats/ListChats/ListChats.jsx';
-import Posts from './Posts/Posts.jsx';
+//import { NavLink, Switch, Route } from 'react-router-dom';
 import { ThemeProvider, createTheme, Container} from '@mui/material';
 import { ToggleContext, getMode, SwitchLight } from '../myScripts/myScripts.js';
 
@@ -33,10 +30,6 @@ function App() {
 					<div
 						className={classes.wrapper}
 					>
-						<ListChats />
-						<MsgForm />
-						<Comments />
-						<Posts/>
 					</div>
 				</Container>
 			</ThemeProvider>
@@ -44,4 +37,8 @@ function App() {
 	);
 }
 
+
 export default App;
+
+
+

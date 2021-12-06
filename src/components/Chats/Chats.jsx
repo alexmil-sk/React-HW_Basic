@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import classes from './ListChats.module.css';
+import classes from './Chats.module.css';
 import { List, ListItem, ListItemAvatar, ListItemText, Container, Box, Typography, Avatar, IconButton, Divider } from '@mui/material';
 //import { styled } from '@mui/material/styles';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
-import chatUsersArray from '../../../source/db/chatDb.js';
+import chatUsersArray from '../../source/db/chatDb.js';
 
-function ListChats() {
+function Chats() {
 
 
 	const [dense, setDense] = useState(true);
@@ -69,4 +69,4 @@ function ListChats() {
 	)
 }
 
-export default ListChats;
+export default Chats;
