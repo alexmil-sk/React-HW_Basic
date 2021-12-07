@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import classes from './Chats.module.css';
-import ChatItem from './ChatItem/ChatItem.jsx';
+//import ChatItem from './ChatItem/ChatItem.jsx';
+import MsgForm from '../MsgForm/MsgForm.jsx';
 import { List, ListItem, ListItemAvatar, ListItemText, Container, Box, Typography, Avatar, IconButton, Divider } from '@mui/material';
 //import { styled } from '@mui/material/styles';
 import { NavLink, Switch, Route } from 'react-router-dom';
@@ -40,7 +41,7 @@ function Chats() {
 								return (
 									<>
 										<NavLink
-											to={`chats/${item.id}`}
+											to={`chats/${item.id}/msgform`}
 											className={isActive => !isActive ? classes.unselected : classes.active}
 										>
 											<div key={item.id}>
@@ -80,7 +81,7 @@ function Chats() {
 					<Box className={classes.boxChat}>
 						<Switch>
 							<Route>
-								<ChatItem path="/:chatId" />
+								<MsgForm path="chats/:chatId/msgform" />
 							</Route>
 						</Switch>
 					</Box>

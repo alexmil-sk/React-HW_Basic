@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react';
+import React, { useState, useCallback, useEffect, useRef, useParams } from 'react';
 import classes from './MsgForm.module.css';
 import './MsgFormAnime.css';
 import { styled } from '@mui/material/styles';
@@ -9,6 +9,7 @@ import MessageIcon from '@mui/icons-material/Message';
 
 
 function MsgForm(props) {
+
 
 	const [msgSubmit, setMsgSubmit] = useState([]);
 

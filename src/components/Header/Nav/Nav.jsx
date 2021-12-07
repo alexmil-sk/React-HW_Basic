@@ -45,17 +45,6 @@ function Nav() {
 						>CHATS
 						</NavLink>
 					</Button>
-					<Button
-						variant="h6"
-						sx={{ flexGrow: 1 }}
-					>
-						<NavLink
-							exact
-							to="/messages"
-							className={isActive => !isActive ? classes.unselected : classes.active}
-						>MESSAGES
-						</NavLink>
-					</Button>
 					<Button variant="h6" sx={{ flexGrow: 1 }}>
 						<NavLink
 							to="/coffee"
@@ -80,7 +69,7 @@ function Nav() {
 				<Route path="/posts/:postId" component={PostItem}/>
 				<Route path="/chats" component={Chats}/>
 				{/* <Route path="/chats/:chatId" component={ChatItem} /> */}
-				<Route path="/messages" component={MsgForm} />
+				{/* <Route path="/msgform" component={MsgForm} /> */}
 				<Route path="/profile" component={Profile} />
 				<Route path="/posts/:postId/comments" component={Comments} />
 				<Route path={["/*", "/chats/:chatId/*", "/chats/*", "/posts/:postId/*", "/posts/*", "/messages/*", "/coffee/:coffeeId/*", "/coffee/*"]} component={NotFound} />

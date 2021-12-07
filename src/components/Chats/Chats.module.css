@@ -16,6 +16,7 @@
 .boxUsers {
 	border-right: 1px solid #9C27B0;
 	flex: 1 0 25%;
+	padding-right:10px;
 
 
 }
