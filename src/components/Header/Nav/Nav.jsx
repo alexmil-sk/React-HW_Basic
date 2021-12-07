@@ -78,12 +78,12 @@ function Nav() {
 				<Route path="/coffee/:coffeeId" component={CoffeeItem}/>
 				<Route path="/posts" component={Posts} exact/>
 				<Route path="/posts/:postId" component={PostItem}/>
-				<Route path="/chats" component={Chats} exact/>
-				<Route path="/chats/:chatId" component={ChatItem} />
+				<Route path="/chats" component={Chats}/>
+				{/* <Route path="/chats/:chatId" component={ChatItem} /> */}
 				<Route path="/messages" component={MsgForm} />
 				<Route path="/profile" component={Profile} />
 				<Route path="/posts/:postId/comments" component={Comments} />
-				<Route path={["/posts/:postId/*", "/posts/*", "/messages/*", "/coffee/:coffeeId/*", "/coffee/*"]} component={NotFound} />
+				<Route path={["/*", "/chats/:chatId/*", "/chats/*", "/posts/:postId/*", "/posts/*", "/messages/*", "/coffee/:coffeeId/*", "/coffee/*"]} component={NotFound} />
 			</Switch>
 		</Box>
 	)

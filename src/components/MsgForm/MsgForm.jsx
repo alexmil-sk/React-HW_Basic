@@ -123,7 +123,7 @@ function MsgForm(props) {
 	return (
 		<>
 			<Container sx={{ padding: '0!important', ml: 1, mr: 1 }}>
-				<Box sx={{ width: '600px', mb: '25px' }}>
+				<Box sx={{mb: '25px' }}>
 					<div className={classes.container}>
 						<Typography
 							color="secondary"

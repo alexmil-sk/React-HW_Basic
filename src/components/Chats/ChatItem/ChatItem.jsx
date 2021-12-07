@@ -7,11 +7,13 @@ import MoreIcon from '@mui/icons-material/More';
 
 
 
-function ChatItem(props) {
-	const { chatId } = useParams();//! Достает из match.params одну из его характеристик: postId
+function ChatItem() {
+	const {chatId } = useParams();//! Достает из match.params одну из его характеристик: postId
 
-	const chat = chatUsersArray.find(item => item.id === chatId);
+	//const chat = chatUsersArray.find(item => item.id === chatId);
+	const chat = chatUsersArray[0];
 
+	console.log()
 	if (!chat) {
 		return <Redirect to="/404" />;
 	}
@@ -19,25 +21,9 @@ function ChatItem(props) {
 
 	return (
 		<Box>
-			<NavLink
-				className={classes.commentLink}
-				to={`/chats`}>
-				<IconButton color="secondary">
-					<MoreIcon fontSize="large" />
-				</IconButton>
-				<Typography
-					variant="h6"
-					color="secondary"
-					sx={{ display: 'inline-block', padding: 0 }}
-				>
-					BACK TO CHATS LIST
-				</Typography>
-			</NavLink>
 			<Typography color="primary">
-				<Typography sx={{ textAlign: 'center' }} variant="h3" color="secondary">AUTHOR: {chat.name}</Typography>
-				<h4>ID: {chat.id}</h4>
+				<h4>DATE: {new Date().toLocaleDateString()}</h4>
 				<h4>AUTHOR: {chat.name}</h4>
-				<h4>DATE: {chat.date}</h4>
 				<p>Content:</p>
 			</Typography>
 		</Box>

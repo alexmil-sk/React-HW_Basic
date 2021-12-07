@@ -16,15 +16,18 @@ function Chats() {
 
 	return (
 		<>
-			<Box>
-				<Container className={classes.container} >
-					<Typography
-						color="secondary"
-						className={classes.mainTitle}
-						variant="h3"
-						sx={{ mt: 2, mb: 2 }}
-					>List of Chats</Typography>
-					<Box sx={{ mb: '25px', padding: '20px', margin: '0 7px' }}>
+			<Container className={classes.container} >
+				<Typography
+					color="secondary"
+					className={classes.mainTitle}
+					variant="h3"
+					sx={{ mt: 2, mb: 2 }}
+				>List of Chats</Typography>
+				<Box className={classes.wrapper}>
+					<Box
+						className={classes.boxUsers}
+						sx={{ mb: '25px', margin: '0 7px' }}
+					>
 						<Typography
 							color="secondary"
 							variant="h4"
@@ -35,45 +38,54 @@ function Chats() {
 						<List dense={dense}>
 							{chatArray.map(item => {
 								return (
-									<NavLink
-										to={`/chats/${item.id}`}
-										className={isActive => !isActive ? classes.unselected : classes.active}
-									>
-										<div key={item.id}>
-											<ListItem
-												secondaryAction={
-													<IconButton edge="end" aria-label="delete">
-														<DeleteTwoToneIcon
-															fontSize="large"
-															color="secondary"
+									<>
+										<NavLink
+											to={`chats/${item.id}`}
+											className={isActive => !isActive ? classes.unselected : classes.active}
+										>
+											<div key={item.id}>
+												<ListItem
+													secondaryAction={
+														<IconButton edge="end" aria-label="delete">
+															<DeleteTwoToneIcon
+																fontSize="large"
+																color="secondary"
+															/>
+														</IconButton>
+													}
+												>
+													<ListItemAvatar>
+														<Avatar
+															src={item.image}
+															sx={{ width: 58, height: 58 }}
 														/>
-													</IconButton>
-												}
-											>
-												<ListItemAvatar>
-													<Avatar
-														src={item.image}
-														sx={{ width: 58, height: 58 }}
+													</ListItemAvatar>
+													<ListItemText
+														className={classes.chatName}
+														primary={item.name}
+														secondary={item.id ? `ID: ${item.id}` : 'Введите ID'}
 													/>
-												</ListItemAvatar>
-												<ListItemText
-													className={classes.chatName}
-													primary={item.name}
-													secondary={item.id ? `ID: ${item.id}` : 'Введите ID'}
+												</ListItem>
+												<Divider
+													variant="inset"
+													sx={{ color: '#666', mt: 1 }}
 												/>
-											</ListItem>
-											<Divider
-												variant="inset"
-												sx={{ color: '#666', mt: 1 }}
-											/>
-										</div>
-									</NavLink>
+											</div>
+										</NavLink>
+									</>
 								);
 							})}
 						</List>
 					</Box>
-				</Container>
-			</Box>
+					<Box className={classes.boxChat}>
+						<Switch>
+							<Route>
+								<ChatItem path="/:chatId" />
+							</Route>
+						</Switch>
+					</Box>
+				</Box>
+			</Container>
 		</>
 	)
 }
