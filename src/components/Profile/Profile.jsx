@@ -50,7 +50,6 @@ function Profile() {
 					</Toolbar>
 				</AppBar>
 			</Box>
-
 			<Typography sx={{ textAlign: 'center' }} variant="h2" color="secondary">PROFILE</Typography>
 
 

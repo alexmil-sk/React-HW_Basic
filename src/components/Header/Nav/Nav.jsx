@@ -5,7 +5,6 @@ import CoffeeItem from '../../Coffee/CoffeeItem/CoffeeItem.jsx';
 import MsgForm from '../../MsgForm/MsgForm.jsx';
 import Comments from '../../Comments/Comments.jsx';
 import Chats from '../../Chats/Chats.jsx';
-import ChatItem from '../../Chats/ChatItem/ChatItem.jsx';
 import Posts from '../../Posts/Posts.jsx';
 import PostItem from '../../Posts/PostItem/PostItem.jsx';
 import NotFound from '../../NotFound/NotFound.jsx';
@@ -68,8 +67,6 @@ function Nav() {
 				<Route path="/posts" component={Posts} exact/>
 				<Route path="/posts/:postId" component={PostItem}/>
 				<Route path="/chats" component={Chats}/>
-				{/* <Route path="/chats/:chatId" component={ChatItem} /> */}
-				{/* <Route path="/msgform" component={MsgForm} /> */}
 				<Route path="/profile" component={Profile} />
 				<Route path="/posts/:postId/comments" component={Comments} />
 				<Route path={["/*", "/chats/:chatId/*", "/chats/*", "/posts/:postId/*", "/posts/*", "/messages/*", "/coffee/:coffeeId/*", "/coffee/*"]} component={NotFound} />
