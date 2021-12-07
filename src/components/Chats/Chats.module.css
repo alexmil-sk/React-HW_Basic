@@ -13,3 +13,16 @@
 	color: gray;
 	text-align: center;
 }
+
+.chatName {
+	text-decoration: none!important;
+}
+
+.active {
+	text-decoration: none;
+
+}
+
+.unselected {
+	text-decoration: none;
+}

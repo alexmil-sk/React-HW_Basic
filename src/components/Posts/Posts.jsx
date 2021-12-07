@@ -10,7 +10,6 @@ function Posts() {
 		<Box>
 			<Typography sx={{ textAlign: 'center' }} variant="h1" color="secondary">Posts</Typography>
 			<ul>
-				
 				{MOCK_POSTS.map((item) => (
 					<li key={item.id}>
 						<Typography

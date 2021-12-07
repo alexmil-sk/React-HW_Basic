@@ -1,0 +1,26 @@
+.toolbar {
+	min-height: 30px !important;
+
+}
+.btn {
+	line-height: 1;
+
+}
+
+.active {
+	color: yellow;
+	text-decoration: none;
+	line-height: 1;
+}
+
+.unselected {
+	text-decoration: none;
+	color: white;
+	line-height: 1;
+}
+
+.unselected:hover {
+	color: yellow;
+	text-decoration: none;
+	line-height: 1;
+}

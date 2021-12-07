@@ -17,7 +17,7 @@ function PostItem(props) {
 	const post = MOCK_POSTS.find(item => item.id === postId);
 
 	if (!post) {
-		return <Redirect to="/posts" />;
+		return <Redirect to="/404" />;
 	}
 
 	return (

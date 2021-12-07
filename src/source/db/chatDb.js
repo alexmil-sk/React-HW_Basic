@@ -10,6 +10,7 @@ const chatUsersArray = [
 	{
 		id: nanoidId1,
 		name: "Николай",
+		date: new Date().toLocaleDateString(),
 		image: "https://e7.pngegg.com/pngimages/109/994/png-clipart-teacher-student-college-school-education-avatars-child-face.png"
 	},
 	{

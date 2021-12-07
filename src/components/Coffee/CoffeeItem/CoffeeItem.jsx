@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useParams } from 'react';
 import './CoffeeItem.css';
-import { NavLink} from 'react-router-dom';
+import { NavLink, Redirect} from 'react-router-dom';
 import { Box, Typography, IconButton } from '@mui/material';
 import MoreIcon from '@mui/icons-material/More';
 
@@ -16,9 +16,8 @@ function CoffeeItem({match}) {
 	}
 	useEffect(() => {
 		fetchItem();
+		
 	}, []);
-
-	
 
 
 	return (

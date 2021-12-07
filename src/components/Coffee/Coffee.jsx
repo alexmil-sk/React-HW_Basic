@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Coffee.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { Box, Typography } from '@mui/material';
 
 
@@ -21,6 +21,8 @@ function Coffee() {
 
 		fetchItems();
 	}, []);
+
+	
 
 
 	return (
