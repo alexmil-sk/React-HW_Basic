@@ -8,6 +8,10 @@
 	position: relative;
 }
 
+.btnWrapper {
+	position: relative;
+}
+
 .errorBtn {
 	background-color: coral!important;
 	opacity: 1;

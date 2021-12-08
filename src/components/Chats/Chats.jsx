@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, } from 'react';
 import classes from './Chats.module.css';
 import MsgForm from '../MsgForm/MsgForm.jsx';
 import NotFound from '../NotFound/NotFound.jsx';
-import { List, ListItem, ListItemAvatar, ListItemText, Container, Box, Typography, Avatar, IconButton, Divider } from '@mui/material';
+import { List, ListItem, ListItemAvatar, ListItemText, Container, Box, Typography, Avatar, IconButton, Divider, Button } from '@mui/material';
 //import { styled } from '@mui/material/styles';
+import { nanoid, customAlphabet } from 'nanoid';
 import { NavLink, Switch, Route } from 'react-router-dom';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
+import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import chatUsersArray from '../../source/db/chatDb.js';
 
 function Chats() {
@@ -13,6 +16,46 @@ function Chats() {
 
 	const [dense, setDense] = useState(true);
 	const [chatArray, setChatArray] = useState(chatUsersArray);
+
+	const CustomNanoid = customAlphabet('УКЕНГЗХДЛОРПАВФЯСМИТБЮукенгзвапролджсмитбю', 7);
+	const NewNanoidName = CustomNanoid();
+	const NewNanoid = nanoid(8);
+
+
+
+	const addUserChat = (e) => {
+		e.preventDefault();
+		setChatArray((chatArray) => {
+			const newChatArray = [...chatArray];
+			newChatArray.push({
+				idx: Date.now(),
+				id: NewNanoid,
+				name: NewNanoidName,
+				date: new Date().toLocaleDateString(),
+				image: "https://cs8.pikabu.ru/avatars/1832/x1832143-2115011424.png"
+			})
+			return newChatArray;
+		})
+	}
+
+
+
+
+
+
+
+	const addAllChat = useCallback((e) => {
+		e.preventDefault();
+		setChatArray(chatUsersArray);
+	}, []);
+
+
+	const removeChat = useCallback((e, id) => {
+		e.preventDefault();
+		setChatArray((chatArray) => {
+			return chatArray.filter(user => user.id !== id);
+		});
+	}, [])
 
 
 	return (
@@ -47,7 +90,9 @@ function Chats() {
 											<div key={item.id}>
 												<ListItem
 													secondaryAction={
-														<IconButton edge="end" aria-label="delete">
+														<IconButton
+															edge="end"
+															onClick={(e) => removeChat(e, item.id)}>
 															<DeleteTwoToneIcon
 																fontSize="large"
 																color="secondary"
@@ -77,11 +122,35 @@ function Chats() {
 								);
 							})}
 						</List>
+						<Button
+							className={classes.aadUserBtn}
+							variant="contained"
+							color="secondary"
+							size="small"
+							onClick={(e) => addUserChat(e)}
+						>
+							<PersonAddAltIcon
+								fontSize="large"
+								color="inherit"
+							/>
+						</Button>
+						<Button
+							className={classes.addAllBtn}
+							variant="contained"
+							color="secondary"
+							size="small"
+							onClick={(e) => addAllChat(e)}
+						>
+							<GroupAddIcon
+								fontSize="large"
+								color="inherit"
+							/>
+						</Button>
 					</Box>
 					<Box className={classes.boxChat}>
 						<Switch>
 							<Route component={MsgForm} path="/chats/:chatId" />
-							<Route path="/chats*" component={NotFound}/>
+							<Route path="/chats*" component={NotFound} />
 						</Switch>
 					</Box>
 				</Box>

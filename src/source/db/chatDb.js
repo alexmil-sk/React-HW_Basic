@@ -16,16 +16,19 @@ const chatUsersArray = [
 	{
 		id: nanoidId3,
 		name: "Ольга",
+		date: new Date().toLocaleDateString(),
 		image: "https://st3.depositphotos.com/8132176/34403/v/1600/depositphotos_344031988-stock-illustration-cute-vector-girl-avatar-icon.jpg"
 	},
 	{
 		id: nanoidId2,
 		name: 'Петр',
+		date: new Date().toLocaleDateString(),
 		image: "https://www.vornexinc.com/site_images/james.png"
 	},
 	{
 		id: nanoidId4,
 		name: 'Света',
+		date: new Date().toLocaleDateString(),
 		image: "https://alexeykrol.com/wp-content/uploads/2018/12/karolyn-fox-foto.1024x1024.jpg"
 
 	}

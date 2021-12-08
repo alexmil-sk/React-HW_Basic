@@ -38,6 +38,12 @@
 	margin-left: 10px;
 }
 
+.aadUserBtn,
+.addAllBtn {
+	width: 100%;
+	margin-top: 10px!important;
+}
+
 .active {
 	text-decoration: none;
 
