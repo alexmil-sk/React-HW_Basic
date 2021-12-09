@@ -1,0 +1,54 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	font-size: 18px;
+	background: #fff;
+	padding: 0!important;
+	margin-left: 0px!important;
+}
+
+.wrapper {
+	display: flex;
+	justify-content: start;
+}
+
+.boxUsers {
+	border-right: 1px solid #9C27B0;
+	flex: 1 0 25%;
+	padding-right:10px;
+
+
+}
+
+.boxChat {
+	flex: 1 0 70%;
+	text-align: center;
+
+}
+
+.mainTitle {
+	font-size: 2.5em;
+	color: gray;
+	text-align: center;
+}
+
+.chatName {
+	text-decoration: none!important;
+	margin-left: 10px;
+}
+
+.aadUserBtn,
+.addAllBtn {
+	width: 100%;
+	margin-top: 10px!important;
+}
+
+.active {
+	text-decoration: none;
+
+}
+
+.unselected {
+	text-decoration: none;
+}

@@ -1,14 +1,18 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import classes from './MsgForm.module.css';
 import './MsgFormAnime.css';
+import chatUsersArray from '../../source/db/chatDb.js';
 import { styled } from '@mui/material/styles';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { Redirect, useParams } from 'react-router-dom';
 import { TextField, Container, Box, Avatar, Typography, Button, Badge, ListItem, List } from '@mui/material';
 import MessageIcon from '@mui/icons-material/Message';
 
 
 
 function MsgForm(props) {
+
+	const { chatId } = useParams();//! Достает из match.params одну из его характеристик: postId
 
 	const [msgSubmit, setMsgSubmit] = useState([]);
 
@@ -112,18 +116,25 @@ function MsgForm(props) {
 	}, [valueId]);
 
 	const delSubMsgs = useCallback((idx) => {
-		console.log(idx);
 		setMsgSubmit((msgSubmit) => {
 			return msgSubmit.filter(user => user.idx !== idx);
 		})
 	}, [])
 
+//*=================================================================
+	
+
+	if (!chatUsersArray.find(({ id }) => id === chatId)) {
+		return <Redirect to="/404" />;
+	}
+
+//*==================================================================
 
 
 	return (
 		<>
 			<Container sx={{ padding: '0!important', ml: 1, mr: 1 }}>
-				<Box sx={{ width: '600px', mb: '25px' }}>
+				<Box sx={{mb: '25px' }}>
 					<div className={classes.container}>
 						<Typography
 							color="secondary"

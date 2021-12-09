@@ -88,7 +88,7 @@ export const getMode = (mode) => ({
 							//color: '#9c27b0',
 							color: '#fff',
 							fontWeight: 'bold',
-							textShadow: '1px 0 3px #77048bcf'
+							textShadow: '1px 0 3px #77048bcf',
 						}
 					}
 				},
@@ -96,7 +96,7 @@ export const getMode = (mode) => ({
 					backgroundColor: '#ccc',
 					styleOverrides: {
 						root: {
-							//	borderBottom: '1px solid #ccccccad',//, смю Divider в конце palette
+							//	borderBottom: '1px solid #ccccccad',//, смю Divider в конце 
 						},
 					}
 				},
@@ -150,7 +150,7 @@ export const getMode = (mode) => ({
 						primary: {
 							fontSize: '1.2em',
 							fontWeight: 'bold',
-							textShadow: '1px 0 1px #000'
+							textShadow: '1px 0 1px #000',
 						}
 					}
 				},

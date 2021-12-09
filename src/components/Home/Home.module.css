@@ -1,0 +1,27 @@
+.toolbar {
+	min-height: 30px!important;
+}
+
+.active {
+	color: yellow;
+	text-decoration: none;
+}
+
+.unselected {
+	text-decoration: none;
+	color: white;
+	text-align: left!important;
+	font-family: "Roboto",
+	"Helvetica",
+	"Arial",
+	sans-serif;
+	font-weight: 500;
+	font-size: 0.875rem;
+	letter-spacing: 0.02857em;
+}
+
+.unselected:hover {
+	color: yellow;
+	text-decoration: none;
+	line-height: 1;
+}
