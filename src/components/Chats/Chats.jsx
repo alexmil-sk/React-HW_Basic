@@ -39,11 +39,6 @@ function Chats() {
 	}
 
 
-
-
-
-
-
 	const addAllChat = useCallback((e) => {
 		e.preventDefault();
 		setChatArray(chatUsersArray);
@@ -102,8 +97,8 @@ function Chats() {
 												>
 													<ListItemAvatar>
 														<Avatar
-															src={item.image}
 															sx={{ width: 58, height: 58 }}
+															src={item.image}
 														/>
 													</ListItemAvatar>
 													<ListItemText
