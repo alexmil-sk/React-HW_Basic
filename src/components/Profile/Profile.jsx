@@ -13,7 +13,6 @@ import { CHECKED_BOX } from '../../store/profile/actionsProfile.js';
 function Profile() {
 
 	const dispatch = useDispatch();
-	const checkBox = useSelector(state => state.checkBox);
 
 	return (
 		<div>
@@ -57,14 +56,15 @@ function Profile() {
 			</Box>
 			<Typography sx={{ textAlign: 'center' }} variant="h2" color="secondary">PROFILE</Typography>
 			<Box>
+				
 				<Checkbox
 					size="large"
-					onChange={(e) => {
-						dispatch({
-							type: CHECKED_BOX,
-							payload: e.currentTarget.checked,
-						})
-					}}
+					// onChange={(e) => {
+					// 	dispatch({
+					// 		type: CHECKED_BOX,
+					// 		payload:
+					// 	})
+					// }}
 				/>
 				<TextField
 					//inputRef
@@ -74,10 +74,10 @@ function Profile() {
 					variant="outlined"
 					margin="dense"
 					color="secondary"
-					sx={checkBox ? { backgroundColor: 'lightgreen'} : { backgroundColor: '#ffe066'}}
 					label="CHECKBOX WINDOW"
-					value={checkBox ? 'CheckBox is ON' : 'CheckBox is OFF'}
+					defaultValue={'defaultValue'}
 				/>
+				
 			</Box>
 			<Switch>
 				<Route path="/profile/favorites" component={Favorites} />

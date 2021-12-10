@@ -8,13 +8,13 @@ const initialState = {
 export const reducerProfile = (state = initialState, action) => {
 
 	switch (action.type) {
-		case CHECKED_BOX: {
+		case CHECKED_BOX: 
 			return {
-				checkBox: action.payload,
+				...state,
+				checkBox: !state.checkBox,
 			}
-		}
-		default: {
+		default:
 			return state;
-		}
+
 	}
 }
