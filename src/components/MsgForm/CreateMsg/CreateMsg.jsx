@@ -2,9 +2,10 @@ import React, { useState, useRef, useCallback, useEffect } from 'react';
 import classes from '../MsgForm.module.css';
 import '../MsgFormAnime.css';
 import chatUsersArray from '../../../source/db/chatDb.js';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { useSelector } from "react-redux";
+//import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Redirect, useParams } from 'react-router-dom';
-import { TextField, Container, Box, Avatar, Typography, Button, Badge, ListItem, List } from '@mui/material';
+import { TextField, Container, Box, Avatar, Typography, Button, Badge } from '@mui/material';
 import MessageIcon from '@mui/icons-material/Message';
 import { getMsg } from '../../../store/msgForm/selectorsMsgForm.js';
 
@@ -12,13 +13,16 @@ import { getMsg } from '../../../store/msgForm/selectorsMsgForm.js';
 
 function CreateMsg({ onSave }) {
 
+	const messages = useSelector(getMsg);
 	const { chatId } = useParams();//! Достает из match.params одну из его характеристик: postId
 
 	const [msgValue, setMsgValue] = useState({
+		idx: Date.now(),
 		id: '',
 		title: '',
 		body: '',
 		image: ''
+		//image: 'https://cs8.pikabu.ru/avatars/1832/x1832143-2115011424.png'
 	})
 
 	const msgReset = useCallback(() => {
@@ -50,7 +54,7 @@ function CreateMsg({ onSave }) {
 		e.preventDefault();
 		if (msgValue.id === '' || msgValue.title === '' || msgValue.body === '') {
 			alert('Заполните поля');
-		}
+		} else if (!msgValue.image ? 'https://cs8.pikabu.ru/avatars/1832/x1832143-2115011424.png' : msgValue.image )
 		onSave(msgValue);
 		msgReset();
 	}
@@ -111,24 +115,14 @@ function CreateMsg({ onSave }) {
 	}, [msgValue.id]);
 	//todo=============================
 
-	//!_Delete Button for message=======
-	//const delSubMsgs = useCallback((idx) => {
-	//	setMsgValue((msgValue) => {
-	//		return msgValue.filter(user => user.idx !== idx);
-	//	})
-	//}, [])
-
-	//!_Delete Button for message end=======
-
 	//*=================================================================
 
 
-	if (!chatUsersArray.find(({ id }) => id === chatId)) {
+	if (messages.find(({ id }) => id === chatId)) {
 		return <Redirect to="/404" />;
 	}
 
 	//*==================================================================
-
 
 	return (
 		<>
@@ -197,7 +191,7 @@ function CreateMsg({ onSave }) {
 								size="large"
 								sx={{ width: 80, height: 80, margin: '15px auto', borderRadius: '50%', boxShadow: '0 0 10px 5px #07233E' }}
 							>
-								<Badge overlap="circular" color="info" sx={{ color: 'white' }} badgeContent={getMsg.length}>
+								<Badge overlap="circular" color="info" sx={{ color: 'white' }} badgeContent={messages.length}>
 									<MessageIcon sx={{ fontSize: 50 }} />
 								</Badge>
 							</Button>

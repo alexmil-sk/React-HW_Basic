@@ -1,4 +1,5 @@
-export const getMsgReducer = (state) => state.msgForm;
+export const getMsgReducer = (state) => state;
+
 export const getMsg = (state) => getMsgReducer(state).messages;
-export const getMsgError = (state) => getMsg(state).error;
-export const getMsgLoading = (state) => getMsg(state).isLoading;
+export const getMsgError = (state) => getMsgReducer(state).error;
+export const getMsgLoading = (state) => getMsgReducer(state).isLoading;
