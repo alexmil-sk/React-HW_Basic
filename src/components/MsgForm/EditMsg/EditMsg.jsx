@@ -1,58 +1,61 @@
 import { useState } from 'react';
-import { Card, Button, Stack, Modal } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
-import CreateMsg  from "../CreateMsg/CreateMsg.jsx";
-import { editMessage } from "../../../store/msgForm/actionsMsgForm.js";
+import { useDispatch, useSelector } from 'react-redux';
+import { editMessage, deleteMessage } from "../../../store/msgForm/actionsMsgForm.js";
+import { Drawer, Box, Button } from '@mui/material';
+import classes from '../MsgForm.module.css';
+import SaveIcon from '@mui/icons-material/Save';
+import CreateMsg from '../CreateMsg/CreateMsg.jsx';
+import { getMsg } from '../../../store/msgForm/selectorsMsgForm.js';
+
+
+
 
 
 const EditMsg = (props) => {
-	const [isEdit, setIsEdit] = useState(false);
+
+	const messages = useSelector(getMsg);
+
+
 	const dispatch = useDispatch();
+	const {
+		openDrawer,
+		closeDrawer,
+	} = props;
 
-	const onEdit = () => {
-		setIsEdit(true)
-	}
-	const onCancelChanges = () => {
-		setIsEdit(false)
-	}
-	const onSaveChanges = (value) => {
-		setIsEdit(false)
-		dispatch(
-			editMessage({
-				id: props.id,
-				...value,
-			})
-		)
-	}
+const onSave = (value) => {
+	closeDrawer();
+	dispatch(
+		editMessage({
+			//id: props.id,
+			id: value.id,
+			...value,
+		})
+	)
+}
 
-	return <>
-		<Card style={{ width: '18rem' }}>
-			<Card.Body>
-				<Card.Title>{props.title}</Card.Title>
-				<Card.Text>
-					{props.content}
-				</Card.Text>
-				<Stack direction="horizontal" gap={3}>
-					<Button onClick={onEdit} variant="primary">Edit</Button>
-					<Button onClick={props.onDelete} variant="primary">Delete</Button>
-				</Stack>
-			</Card.Body>
-		</Card>
-		<Modal show={isEdit} onHide={onCancelChanges}>
-			<Modal.Header closeButton>
-				<Modal.Title>Post edit</Modal.Title>
-			</Modal.Header>
-			<Modal.Body>
+
+
+	return (
+		<Drawer
+			anchor="left"
+			open={openDrawer}
+			onClose={closeDrawer}
+			className={classes.drawer}
+		>
+
 				<CreateMsg
-					onSave={onSaveChanges}
+					onSave={onSave}
 					initialValues={{
-						title: props.title,
-						content: props.content,
-					}}
+						id: (messages.length !== 0 ? messages[0].id : 'underfined' ),
+						title: (messages.length !== 0 ? messages[0].title : 'underfined'),
+						body: (messages.length !== 0 ? messages[0].body : 'underfined'),
+						image: (messages.length !== 0 ? messages[0].image : 'underfined' ),
+				}}
+				
+
 				/>
-			</Modal.Body>
-		</Modal>
-	</>
+		</Drawer>
+	)
 }
 
 

@@ -7,9 +7,10 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { useParams, Redirect } from 'react-router-dom';
 import { getMsg } from '../../../store/msgForm/selectorsMsgForm.js';
 import { ListItem, List, Container, Box, Avatar, Typography } from '@mui/material';
+import ModeEditIcon from '@mui/icons-material/ModeEdit';
 
 
-function ListMsg({ onDelete }) {
+function ListMsg({ onDelete, onEdit, handleOpen }) {
 
 	const messages = useSelector(getMsg);
 	const { chatId } = useParams();//! Достает из match.params одну из его характеристик: postId
@@ -51,8 +52,6 @@ function ListMsg({ onDelete }) {
 													severity="info"
 													variant="outlined"
 												>
-													{/* <EditMsg onDelete={onDelete} /> */}
-
 													<div className={classes.msgContent}>
 														<div className={classes.msgId}>
 															<Avatar
@@ -69,6 +68,12 @@ function ListMsg({ onDelete }) {
 															className={classes.delBtn}
 															onClick={() => onDelete(msg.id)}
 														>&times;</button>
+														<button
+															onClick={handleOpen}
+															className={classes.editBtn}
+														>
+															<ModeEditIcon />
+															</button>
 													</div>
 												</ListItem>
 											</CSSTransition>

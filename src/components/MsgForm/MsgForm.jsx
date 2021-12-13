@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useDispatch } from 'react-redux';
 import classes from './MsgForm.module.css';
 import './MsgFormAnime.css';
@@ -14,6 +14,7 @@ import { createMessage, deleteMessage} from '../../store/msgForm/actionsMsgForm.
 function MsgForm() {
 
 	const { chatId } = useParams();//! Достает из match.params одну из его характеристик: postId
+	const [openDrawer, setOpenDrawer] = useState(false)
 
 
 	const dispatch = useDispatch();
@@ -23,17 +24,18 @@ function MsgForm() {
 			id: chatId,
 			...value
 		}))
-	}
-
+	} 
 	const onDelete = (value) => {
 		dispatch(deleteMessage(value))
 	}
 
 	return (
 		<>
-			<CreateMsg onSave={onSave} />
-			
-			<ListMsg onDelete={onDelete} />
+			<CreateMsg
+				onSave={onSave}
+			/>
+			<ListMsg handleOpen={() => setOpenDrawer(true)}/>
+			<EditMsg openDrawer={openDrawer} onDelete={onDelete} closeDrawer={() => setOpenDrawer(false)}/>
 		</>
 	)
 }

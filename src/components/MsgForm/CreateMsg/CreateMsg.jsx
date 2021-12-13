@@ -11,12 +11,12 @@ import { getMsg } from '../../../store/msgForm/selectorsMsgForm.js';
 
 
 
-function CreateMsg({ onSave }) {
+function CreateMsg({ initialValues, onSave, onSaveChanges }) {
 
 	const messages = useSelector(getMsg);
 	const { chatId } = useParams();//! Достает из match.params одну из его характеристик: postId
 
-	const [msgValue, setMsgValue] = useState({
+	const [msgValue, setMsgValue] = useState( initialValues || {
 		idx: Date.now(),
 		id: '',
 		title: '',
@@ -134,7 +134,9 @@ function CreateMsg({ onSave }) {
 							variant="h4"
 							className={classes.mainTitle}
 						>Message Form</Typography>
-						<form onSubmit={onSubmitForm} className={classes.form}>
+						<form
+							onSubmit={onSubmitForm}
+							className={classes.form}>
 							<TextField
 								inputRef={inputIdRef}
 								className={classes.formElem}
