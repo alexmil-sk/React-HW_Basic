@@ -1,7 +1,7 @@
 import { createStore } from 'redux';
-import { reducerProfile } from './profile/reducerProfile.js';
+import { messageReducer  } from './msgForm/reducerMsgForm.js';
 
 export const store = createStore(
-	reducerProfile,
+	messageReducer,
 	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
