@@ -10,39 +10,61 @@ import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import chatUsersArray from '../../source/db/chatDb.js';
+import { getChat } from '../../store/chats/selectorsChats.js';
+import { useSelector, useDispatch } from "react-redux";
+import { createChat, deleteChat } from '../../store/chats/actionsChats.js';
 
-function Chats() {
+
+
+function Chats({ initialValues, ...props }) {
 
 
 	const [dense, setDense] = useState(true);
 	const [chatArray, setChatArray] = useState(chatUsersArray);
+	const msgChat = useSelector(getChat);
+	const dispatch = useDispatch();
+
 
 	const CustomNanoid = customAlphabet('УКЕНГЗХДЛОРПАВФЯСМИТБЮукенгзвапролджсмитбю', 7);
 	const NewNanoidName = CustomNanoid();
 	const NewNanoid = nanoid(8);
 
 
+	const [chatValue, setChatValue] = useState(
+		{
+			idx: Date.now(),
+			id: NewNanoid,
+			name: NewNanoidName,
+			date: new Date().toLocaleDateString(),
+			image: "https://cs8.pikabu.ru/avatars/1832/x1832143-2115011424.png"
+		}
+	);
+
 
 	const addUserChat = (e) => {
-		e.preventDefault();
-		setChatArray((chatArray) => {
-			const newChatArray = [...chatArray];
-			newChatArray.push({
-				idx: Date.now(),
-				id: NewNanoid,
-				name: NewNanoidName,
-				date: new Date().toLocaleDateString(),
-				image: "https://cs8.pikabu.ru/avatars/1832/x1832143-2115011424.png"
-			})
-			return newChatArray;
-		})
+		dispatch(createChat(chatValue));
 	}
 
 
-	const addAllChat = useCallback((e) => {
-		e.preventDefault();
-		setChatArray(chatUsersArray);
-	}, []);
+
+	//*======================================================
+
+	// const addUserChat = (e) => {
+	// 	e.preventDefault();
+	// 	setChatArray((chatArray) => {
+	// 		const newChatArray = [...chatArray];
+	// 		newChatArray.push({
+	// 			idx: Date.now(),
+	// 			id: NewNanoid,
+	// 			name: NewNanoidName,
+	// 			date: new Date().toLocaleDateString(),
+	// 			image: "https://cs8.pikabu.ru/avatars/1832/x1832143-2115011424.png"
+	// 		})
+	// 		return newChatArray;
+	// 	})
+	// }
+
+
 
 
 	const removeChat = useCallback((e, id) => {
@@ -75,7 +97,7 @@ function Chats() {
 							Users
 						</Typography>
 						<List dense={dense}>
-							{chatArray.map(item => {
+							{msgChat.map(item => {
 								return (
 									<>
 										<NavLink
@@ -125,18 +147,6 @@ function Chats() {
 							onClick={(e) => addUserChat(e)}
 						>
 							<PersonAddAltIcon
-								fontSize="large"
-								color="inherit"
-							/>
-						</Button>
-						<Button
-							className={classes.addAllBtn}
-							variant="contained"
-							color="secondary"
-							size="small"
-							onClick={(e) => addAllChat(e)}
-						>
-							<GroupAddIcon
 								fontSize="large"
 								color="inherit"
 							/>

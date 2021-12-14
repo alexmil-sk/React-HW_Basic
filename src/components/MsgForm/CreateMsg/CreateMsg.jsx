@@ -118,7 +118,7 @@ function CreateMsg({ initialValues, onSave, onSaveChanges }) {
 	//*=================================================================
 
 
-	if (messages.find(({ id }) => id === chatId)) {
+	if (messages.find(({id}) => id === chatId)) {
 		return <Redirect to="/404" />;
 	}
 
