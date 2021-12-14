@@ -2,7 +2,7 @@ import {
 	CREATE_MSG,
 	DELETE_MSG,
 	EDIT_MSG
-} from './actionsMsgForm';
+} from './actionsMsgForm.js';
 
 const initialState = {
 	messages: [],
