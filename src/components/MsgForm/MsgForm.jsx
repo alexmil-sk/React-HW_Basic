@@ -34,8 +34,8 @@ function MsgForm() {
 			<CreateMsg
 				onSave={onSave}
 			/>
-			<ListMsg handleOpen={() => setOpenDrawer(true)}/>
-			<EditMsg openDrawer={openDrawer} onDelete={onDelete} closeDrawer={() => setOpenDrawer(false)}/>
+			<ListMsg onDelete={onDelete}  handleOpen={() => setOpenDrawer(true)}/>
+			<EditMsg openDrawer={openDrawer} closeDrawer={() => setOpenDrawer(false)}/>
 		</>
 	)
 }

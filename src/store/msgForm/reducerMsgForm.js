@@ -36,14 +36,15 @@ export const messageReducer = (state = initialState, action) => {
 			if (messageIdx === -1) {
 				return state
 			}
-			const newArrMessages = [...state];
+			// const newArrMessages = [...state];
+			const newArrMessages = [...state.messages];
 			newArrMessages[messageIdx] = {
 				...newArrMessages[messageIdx],
 				...action.payload
 			}
 			return {
 				...state,
-				messages: newArrMessages
+				messages: newArrMessages,
 			}
 		}
 		default:

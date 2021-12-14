@@ -10,7 +10,7 @@ import { ListItem, List, Container, Box, Avatar, Typography } from '@mui/materia
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 
 
-function ListMsg({ onDelete, onEdit, handleOpen }) {
+function ListMsg({ onDelete, handleOpen }) {
 
 	const messages = useSelector(getMsg);
 	const { chatId } = useParams();//! Достает из match.params одну из его характеристик: postId
