@@ -16,11 +16,11 @@ function ChatsList({ deleteUserChat, chats }, ...props) {
 	const [dense, setDense] = useState(true);
 
 	return (
-		<div>
+		<Box className={classes.container}>
 			<List dense={dense}>
 				{chats.map(item => {
 					return (
-						<div key={item.id}>
+						<div key={item.id} className={classes.usersBlock}>
 							<NavLink
 								to={`/chats/${item.id}`}
 								className={isActive => !isActive ? classes.unselected : classes.active}
@@ -68,7 +68,7 @@ function ChatsList({ deleteUserChat, chats }, ...props) {
 					<Route path="/chats*" component={NotFound} />
 				</Switch>
 			</Box>
-		</div >
+		</Box>
 	)
 }
 
