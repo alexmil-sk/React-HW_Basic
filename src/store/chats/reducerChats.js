@@ -1,22 +1,22 @@
 import {
 	CREATE_CHAT,
 	DELETE_CHAT,
-	EDIT_CHAT
+	ADD_CHATS
 } from './actionsChats.js';
+
+import usersArray from '../../source/db/chatDb.js';
 
 const initialState = {
 	chats: [],
 	error: null,
-	isLoading: null
+	isLoading: null,
 }
-
 
 export const chatReducer = (state = initialState, action) => {
 
 	switch (action.type) {
 		case CREATE_CHAT: {
 			return {
-				...state,
 				chats: [
 					...state.chats,
 					action.payload
@@ -24,27 +24,13 @@ export const chatReducer = (state = initialState, action) => {
 			}
 		}
 		case DELETE_CHAT: {
-			const newChats = state.chats.filter(chat => chat.id !== action.payload);
-
 			return {
-				...state,
-				chats: newChats
+				chats: state.chats.filter(chat => chat.id !== action.payload)
 			}
 		}
-		case EDIT_CHAT: {
-			const chatIdx = state.chats.findIndex(chat => chat.id === action.payload.id);
-			if (chatIdx === -1) {
-				return state
-			}
-			// const newArrMessages = [...state];
-			const newArrChats = [...state.chats];
-			newArrChats[chatIdx] = {
-				...newArrChats[chatIdx],
-				...action.payload
-			}
+		case ADD_CHATS: {
 			return {
-				...state,
-				chats: newArrChats,
+				chats: [...action.payload],
 			}
 		}
 		default:

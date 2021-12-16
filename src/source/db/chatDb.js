@@ -6,7 +6,7 @@ const nanoidId2 = nanoid(8);
 const nanoidId3 = nanoid(8);
 const nanoidId4 = nanoid(8);
 
-const chatUsersArray = [
+export const chatUsersArray = [
 	{
 		id: nanoidId1,
 		name: "Николай",

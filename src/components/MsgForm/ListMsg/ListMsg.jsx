@@ -1,29 +1,11 @@
 import React from 'react';
 import classes from '../MsgForm.module.css';
 import '../MsgFormAnime.css';
-import EditMsg from '../EditMsg/EditMsg.jsx';
-import { useSelector } from "react-redux";
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { useParams, Redirect } from 'react-router-dom';
-import { getMsg } from '../../../store/msgForm/selectorsMsgForm.js';
 import { ListItem, List, Container, Box, Avatar, Typography } from '@mui/material';
-import ModeEditIcon from '@mui/icons-material/ModeEdit';
 
 
-function ListMsg({ onDelete, handleOpen }) {
-
-	const messages = useSelector(getMsg);
-	const { chatId } = useParams();//! Достает из match.params одну из его характеристик: postId
-
-	//*=================================================================
-
-
-	if (messages.find(({ id }) => id === chatId)) {
-		return <Redirect to="/404" />;
-	}
-
-	//*==================================================================
-
+function ListMsg({ msgList }) {
 
 
 	return (
@@ -39,7 +21,7 @@ function ListMsg({ onDelete, handleOpen }) {
 						<div className={classes.userMsgContainer}>
 							<List className={classes.userMsg}>
 								<TransitionGroup component="span">
-									{messages.map((msg) => {
+									{msgList.map((msg) => {
 										return (
 											<CSSTransition
 												key={msg.idx}
@@ -64,16 +46,6 @@ function ListMsg({ onDelete, handleOpen }) {
 															<span className={classes.msgTitle}>{msg.title}</span>
 															<Typography fontSize="large">{msg.body}</Typography>
 														</div>
-														<button
-															className={classes.delBtn}
-															onClick={() => onDelete(msg.id)}
-														>&times;</button>
-														<button
-															onClick={handleOpen}
-															className={classes.editBtn}
-														>
-															<ModeEditIcon />
-															</button>
 													</div>
 												</ListItem>
 											</CSSTransition>
