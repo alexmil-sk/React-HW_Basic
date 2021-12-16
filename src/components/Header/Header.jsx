@@ -3,6 +3,8 @@ import Nav from './Nav/Nav.jsx';
 import { AppBar, Toolbar, Divider, Typography, IconButton } from '@mui/material';
 import ChatIconButton from '@mui/icons-material/Chat';
 import MenuIconButton from '@mui/icons-material/Menu';
+import { NavLink } from 'react-router-dom';
+
 
 
 
@@ -24,14 +26,16 @@ function Header(props) {
 					<IconButton
 						color="inherit"
 					>
-						<ChatIconButton sx={{ fontSize: 40 }}
-						/>
+						<NavLink
+							to="/chats"
+						><ChatIconButton sx={{ fontSize: 40, color: '#fff' }} />
+						</NavLink>
 						<props.SwitchLight />
 					</IconButton>
 				</Toolbar>
 			</AppBar>
-			<Divider/>
-			<Nav/>
+			<Divider />
+			<Nav />
 		</>
 	)
 }

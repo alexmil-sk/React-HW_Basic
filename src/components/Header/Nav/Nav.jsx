@@ -2,7 +2,6 @@ import React from 'react';
 import classes from './Nav.module.css';
 import Coffee from '../../Coffee/Coffee.jsx';
 import CoffeeItem from '../../Coffee/CoffeeItem/CoffeeItem.jsx';
-import MsgForm from '../../MsgForm/MsgForm.jsx';
 import Comments from '../../Comments/Comments.jsx';
 import Chats from '../../Chats/Chats.jsx';
 import Posts from '../../Posts/Posts.jsx';
