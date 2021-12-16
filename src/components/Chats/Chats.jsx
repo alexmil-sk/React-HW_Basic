@@ -1,56 +1,57 @@
-import React, { useState, useCallback, } from 'react';
+import React, { useCallback, useEffect, } from 'react';
 import classes from './Chats.module.css';
-import MsgForm from '../MsgForm/MsgForm.jsx';
-import NotFound from '../NotFound/NotFound.jsx';
-import { List, ListItem, ListItemAvatar, ListItemText, Container, Box, Typography, Avatar, IconButton, Divider, Button } from '@mui/material';
-//import { styled } from '@mui/material/styles';
+import { Container, Box, Typography, Button } from '@mui/material';
 import { nanoid, customAlphabet } from 'nanoid';
-import { NavLink, Switch, Route } from 'react-router-dom';
-import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
-import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
-import chatUsersArray from '../../source/db/chatDb.js';
+import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
+import { getChatList } from '../../store/chats/selectorsChats.js';
+import { useSelector, useDispatch } from "react-redux";
+import { createChat, deleteChat, addChats } from '../../store/chats/actionsChats.js';
+import { deleteMessageByChat } from '../../store/messages/actionsMsgForm.js';
+import ChatsList from './ChatsList/ChatsList.jsx';
+import { chatUsersArray } from '../../source/db/chatDb.js';
+
+
 
 function Chats() {
+	const chats = useSelector(getChatList);
 
+	const dispatch = useDispatch();
 
-	const [dense, setDense] = useState(true);
-	const [chatArray, setChatArray] = useState(chatUsersArray);
 
 	const CustomNanoid = customAlphabet('УКЕНГЗХДЛОРПАВФЯСМИТБЮукенгзвапролджсмитбю', 7);
 	const NewNanoidName = CustomNanoid();
 	const NewNanoid = nanoid(8);
 
 
+	const addUserChat = useCallback(() => {
+		dispatch(createChat({
+			idx: Date.now(),
+			id: NewNanoid,
+			name: NewNanoidName,
+			date: new Date().toLocaleDateString(),
+			image: "https://cs8.pikabu.ru/avatars/1832/x1832143-2115011424.png"
+		}));
+	}, [])
 
-	const addUserChat = (e) => {
+	const deleteUserChat = (e, chatId) => {
 		e.preventDefault();
-		setChatArray((chatArray) => {
-			const newChatArray = [...chatArray];
-			newChatArray.push({
-				idx: Date.now(),
-				id: NewNanoid,
-				name: NewNanoidName,
-				date: new Date().toLocaleDateString(),
-				image: "https://cs8.pikabu.ru/avatars/1832/x1832143-2115011424.png"
-			})
-			return newChatArray;
-		})
+		dispatch(deleteChat(chatId));
+		dispatch(deleteMessageByChat(chatId))
 	}
 
+	useEffect(() => {
+		dispatch(addChats(chatUsersArray))
+	}, [])
 
-	const addAllChat = useCallback((e) => {
+	const addAllChats = useCallback((e) => {
 		e.preventDefault();
-		setChatArray(chatUsersArray);
+		dispatch(addChats(chatUsersArray))
 	}, []);
 
 
-	const removeChat = useCallback((e, id) => {
-		e.preventDefault();
-		setChatArray((chatArray) => {
-			return chatArray.filter(user => user.id !== id);
-		});
-	}, [])
+
+	//*======================================================
 
 
 	return (
@@ -74,79 +75,33 @@ function Chats() {
 						>
 							Users
 						</Typography>
-						<List dense={dense}>
-							{chatArray.map(item => {
-								return (
-									<>
-										<NavLink
-											to={`/chats/${item.id}`}
-											className={isActive => !isActive ? classes.unselected : classes.active}
-										>
-											<div key={item.id}>
-												<ListItem
-													secondaryAction={
-														<IconButton
-															edge="end"
-															onClick={(e) => removeChat(e, item.id)}>
-															<DeleteTwoToneIcon
-																fontSize="large"
-																color="secondary"
-															/>
-														</IconButton>
-													}
-												>
-													<ListItemAvatar>
-														<Avatar
-															sx={{ width: 58, height: 58 }}
-															src={item.image}
-														/>
-													</ListItemAvatar>
-													<ListItemText
-														className={classes.chatName}
-														primary={item.name}
-														secondary={item.id ? `ID: ${item.id}` : 'Введите ID'}
-													/>
-												</ListItem>
-												<Divider
-													variant="inset"
-													sx={{ color: '#666', mt: 1 }}
-												/>
-											</div>
-										</NavLink>
-									</>
-								);
-							})}
-						</List>
-						<Button
-							className={classes.aadUserBtn}
-							variant="contained"
-							color="secondary"
-							size="small"
-							onClick={(e) => addUserChat(e)}
-						>
-							<PersonAddAltIcon
-								fontSize="large"
-								color="inherit"
-							/>
-						</Button>
-						<Button
-							className={classes.addAllBtn}
-							variant="contained"
-							color="secondary"
-							size="small"
-							onClick={(e) => addAllChat(e)}
-						>
-							<GroupAddIcon
-								fontSize="large"
-								color="inherit"
-							/>
-						</Button>
-					</Box>
-					<Box className={classes.boxChat}>
-						<Switch>
-							<Route component={MsgForm} path="/chats/:chatId" />
-							<Route path="/chats*" component={NotFound} />
-						</Switch>
+						<Box>
+							<Button
+								className={classes.addUserBtn}
+								variant="contained"
+								color="secondary"
+								size="small"
+								onClick={addUserChat}
+							>
+								<PersonAddAltIcon
+									fontSize="large"
+									color="inherit"
+								/>
+							</Button>
+							<Button
+								className={classes.addAllBtn}
+								variant="contained"
+								color="secondary"
+								size="small"
+								onClick={(e) => addAllChats(e)}
+							>
+								<GroupAddIcon
+									fontSize="large"
+									color="inherit"
+								/>
+							</Button>
+						</Box>
+						<ChatsList deleteUserChat={deleteUserChat} chats={chats} />
 					</Box>
 				</Box>
 			</Container>

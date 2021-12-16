@@ -5,15 +5,10 @@ import Help from './Help/Help.jsx';
 import UserInfo from './UserInfo/UserInfo.jsx';
 import NotFound from '../NotFound/NotFound.jsx';
 import { NavLink, Switch, Route } from 'react-router-dom';
-import { TextField, AppBar, Toolbar, Button, Box, Typography, Checkbox } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
-import { CHECKED_BOX } from '../../store/profile/actionsProfile.js';
+import { AppBar, Toolbar, Button, Box, Typography } from '@mui/material';
 
 
 function Profile() {
-
-	const dispatch = useDispatch();
-	const checkBox = useSelector(state => state.checkBox);
 
 	return (
 		<div>
@@ -56,29 +51,6 @@ function Profile() {
 				</AppBar>
 			</Box>
 			<Typography sx={{ textAlign: 'center' }} variant="h2" color="secondary">PROFILE</Typography>
-			<Box>
-				<Checkbox
-					size="large"
-					onChange={(e) => {
-						dispatch({
-							type: CHECKED_BOX,
-							payload: e.currentTarget.checked,
-						})
-					}}
-				/>
-				<TextField
-					//inputRef
-					className={classes.formElem}
-					type="text"
-					name="name"
-					variant="outlined"
-					margin="dense"
-					color="secondary"
-					sx={checkBox ? { backgroundColor: 'lightgreen'} : { backgroundColor: '#ffe066'}}
-					label="CHECKBOX WINDOW"
-					value={checkBox ? 'CheckBox is ON' : 'CheckBox is OFF'}
-				/>
-			</Box>
 			<Switch>
 				<Route path="/profile/favorites" component={Favorites} />
 				<Route path="/profile/help" component={Help} />
