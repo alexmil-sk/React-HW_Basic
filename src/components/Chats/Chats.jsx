@@ -32,7 +32,7 @@ function Chats() {
 			date: new Date().toLocaleDateString(),
 			image: "https://cs8.pikabu.ru/avatars/1832/x1832143-2115011424.png"
 		}));
-	}, [])
+	}, [NewNanoid, NewNanoidName, dispatch])
 
 	const deleteUserChat = (e, chatId) => {
 		e.preventDefault();
