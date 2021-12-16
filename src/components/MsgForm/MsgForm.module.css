@@ -107,3 +107,20 @@
 	height: 40px;
 	cursor: pointer!important;
 }
+
+.editBtn {
+	flex: 0 0 40px;
+	background: #ff9f1a;
+	font-size: 30px;
+	color: #fff;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	cursor: pointer !important;
+}
+
+.drawer {
+	display: flex;
+	text-align: center;
+	justify-self: center;
+}

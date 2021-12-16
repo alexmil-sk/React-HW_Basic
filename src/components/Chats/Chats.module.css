@@ -14,9 +14,9 @@
 }
 
 .boxUsers {
-	border-right: 1px solid #9C27B0;
-	flex: 1 0 25%;
+	/* border-right: 1px solid #9C27B0;*/
 	padding-right:10px;
+	flex: 1 0 25%;
 
 
 }
@@ -38,10 +38,10 @@
 	margin-left: 10px;
 }
 
-.aadUserBtn,
+.addUserBtn,
 .addAllBtn {
-	width: 100%;
-	margin-top: 10px!important;
+	width: 10%;
+	margin: 10px!important;
 }
 
 .active {
