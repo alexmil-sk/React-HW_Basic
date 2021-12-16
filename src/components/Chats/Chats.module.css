@@ -1,9 +1,8 @@
 .container {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	text-align: left;
 	font-size: 18px;
-	background: #fff;
 	padding: 0!important;
 	margin-left: 0px!important;
 }
@@ -14,22 +13,35 @@
 }
 
 .boxUsers {
-	/* border-right: 1px solid #9C27B0;*/
 	padding-right:10px;
 	flex: 1 0 25%;
 
 
 }
 
+.usersBlock {
+	border-right: 1px solid #9c27b0;
+	padding-right: 20px;
+	margin-right:25px;
+}
+
 .boxChat {
 	flex: 1 0 70%;
 	text-align: center;
+	
 
 }
 
 .mainTitle {
 	font-size: 2.5em;
 	color: gray;
+	text-align: center;
+}
+
+.mainTitleUsers {
+	display: block;
+	width: 300px;
+	font-size: 2.5em;
 	text-align: center;
 }
 
@@ -40,6 +52,7 @@
 
 .addUserBtn,
 .addAllBtn {
+	display: block;
 	width: 10%;
 	margin: 10px!important;
 }

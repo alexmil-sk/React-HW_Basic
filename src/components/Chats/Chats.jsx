@@ -13,6 +13,7 @@ import { chatUsersArray } from '../../source/db/chatDb.js';
 
 
 
+
 function Chats() {
 	const chats = useSelector(getChatList);
 
@@ -32,7 +33,7 @@ function Chats() {
 			date: new Date().toLocaleDateString(),
 			image: "https://cs8.pikabu.ru/avatars/1832/x1832143-2115011424.png"
 		}));
-	}, [dispatch, NewNanoidName, NewNanoid])
+	}, [NewNanoid, NewNanoidName, dispatch])
 
 	const deleteUserChat = (e, chatId) => {
 		e.preventDefault();
@@ -68,14 +69,14 @@ function Chats() {
 						className={classes.boxUsers}
 						sx={{ mb: '25px', margin: '0 7px' }}
 					>
-						<Typography
-							color="secondary"
-							variant="h4"
-							className={classes.mainTitle}
-						>
-							Users
-						</Typography>
 						<Box>
+							<Typography
+								color="secondary"
+								variant="h4"
+								className={classes.mainTitleUsers}
+							>
+								Users
+							</Typography>
 							<Button
 								className={classes.addUserBtn}
 								variant="contained"
