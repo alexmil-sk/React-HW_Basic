@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import MsgForm from '../../MsgForm/MsgForm.jsx';
+import {MsgForm} from '../../MsgForm/MsgForm.jsx';
 import NotFound from '../../NotFound/NotFound.jsx';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import { List, ListItem, ListItemAvatar, ListItemText, Box, Avatar, IconButton, Divider } from '@mui/material';

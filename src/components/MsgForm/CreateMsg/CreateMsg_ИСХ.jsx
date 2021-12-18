@@ -54,18 +54,59 @@ function CreateMsg({ initialValues, onSave, msgList}) {
 
 	const onSubmitForm = (e) => {
 		e.preventDefault();
-//*=======Вариант 1
-		if (msgValue.id === '') {
-			return msgValue.id = undefined;
+		if (msgValue.id === '' || msgValue.title === '' || msgValue.body === '') {
+			alert('Заполните поля');
 		}
-//*=======Вариант 2
-		// if (msgValue.id === '' || msgValue.title === '' || msgValue.body === '') {
-		// 	alert('Заполните поля');
-		// 	return;
-		// }
 		onSave(msgValue);
 		msgReset();
 	}
+
+	//!_ACHTUNG!! Das ist Robot!========================
+	// useEffect(() => {
+
+	// if (msgSubmit.length === 0) { return; }
+
+	// const lastUser = msgSubmit.map(item => item.id)
+
+	// if (lastUser[0] === 'info-bot' || lastUser[0] === 'sckeleton') {
+	// return;
+	// }
+	// const timer = setTimeout(() => {
+	// if (lastUser[0] === 'user') {
+	// setMsgSubmit(() => {
+	// const newMsgSubmit = [...msgSubmit];
+	// newMsgSubmit.unshift({
+	// idx: Date.now(),
+	// id: 'info-bot',
+	// title: 'I n f o B o t',
+	// body: `Hi, ** ${lastUser[0]} ** I'm Botty around here!`,
+	// image: 'https://img2.freepng.ru/20180804/pso/kisspng-mobile-robot-stock-photography-image-illustration-%D8%AF%D8%B1%D8%A8%D8%A7%D8%B1%D9%87-%D9%85%D8%A7-%D8%B4%D8%B1%DA%A9%D8%AA-%D8%A2%D8%B1%D8%B3%D8%B3-5b65f6073773d3.7988520615334087752271.jpg'
+	// })
+	// return newMsgSubmit;
+	// })
+	// return;
+	// } else if (lastUser[0] === '') {
+	// return;
+	// } else {
+	// setMsgSubmit(() => {
+	// const newMsgSubmit = [...msgSubmit];
+	// newMsgSubmit.unshift({
+	// idx: Date.now(),
+	// id: 'sckeleton',
+	// title: 'I n f o B o t',
+	// body: `Hi, **${lastUser[0]}** You are not a HUMAN! Man, if you wonna be a HUMAN sign your message as "USER"`,
+	// image: 'https://avatars.mds.yandex.net/i?id=d5cbec0c701f73502694dd515466cb5e-3070965-images-thumbs&ref=rim&n=33&w=225&h=225'
+	// });
+	// return newMsgSubmit;
+	// })
+	// }
+
+	// }, 2000);
+	// return () => { clearTimeout(timer) };
+
+	// }, [msgSubmit]);
+
+	//!_Das ist den Robot ende!====================
 
 
 	//todo_useEffect для активного поля Id
@@ -74,6 +115,8 @@ function CreateMsg({ initialValues, onSave, msgList}) {
 		inputIdRef.current?.focus();
 	}, [msgValue.id]);
 	//todo=============================
+
+	//*=================================================================
 
 	return (
 		<>
@@ -110,7 +153,7 @@ function CreateMsg({ initialValues, onSave, msgList}) {
 								margin="dense"
 								color="secondary"
 								label="Users's avatar http://....."
-								value={getMsgValueByName('image')}
+								//value={getMsgValueByName('image')}
 							/>
 							<TextField
 								className={classes.formElem}
