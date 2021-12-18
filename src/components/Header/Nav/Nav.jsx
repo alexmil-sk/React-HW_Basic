@@ -3,7 +3,7 @@ import classes from './Nav.module.css';
 import Coffee from '../../Coffee/Coffee.jsx';
 import CoffeeItem from '../../Coffee/CoffeeItem/CoffeeItem.jsx';
 import Comments from '../../Comments/Comments.jsx';
-import Chats from '../../Chats/Chats.jsx';
+import {Chats} from '../../Chats/Chats.jsx';
 import Posts from '../../Posts/Posts.jsx';
 import PostItem from '../../Posts/PostItem/PostItem.jsx';
 import NotFound from '../../NotFound/NotFound.jsx';
