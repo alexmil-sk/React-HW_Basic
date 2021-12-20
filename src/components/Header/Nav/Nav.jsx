@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Nav.module.css';
 import Coffee from '../../Coffee/Coffee.jsx';
+import WineShopAPI from '../../WineShopAPI/WineShopAPI.jsx';
 import CoffeeItem from '../../Coffee/CoffeeItem/CoffeeItem.jsx';
 import Comments from '../../Comments/Comments.jsx';
 import {Chats} from '../../Chats/Chats.jsx';
@@ -26,35 +27,42 @@ function Nav() {
 							exact
 							to="/"
 							className={isActive => !isActive ? classes.unselected : classes.active}
-						>HOME
+						>{('home').toUpperCase()}
 						</NavLink>
 					</Button>
 					<Button variant="h6" sx={{ flexGrow: 1 }}>
 						<NavLink
 							to="/posts"
 							className={isActive => !isActive ? classes.unselected : classes.active}
-						>POSTS
+						>{('posts').toUpperCase()}
 						</NavLink>
 					</Button>
 					<Button variant="h6" sx={{ flexGrow: 1 }}>
 						<NavLink
 							to="/chats"
 							className={isActive => !isActive ? classes.unselected : classes.active}
-						>CHATS
+						>{('chats').toUpperCase()}
 						</NavLink>
 					</Button>
 					<Button variant="h6" sx={{ flexGrow: 1 }}>
 						<NavLink
 							to="/coffee"
 							className={isActive => !isActive ? classes.unselected : classes.active}
-						>COFFEE
+						>{('coffee').toUpperCase()}
+						</NavLink>
+					</Button>
+					<Button variant="h6" sx={{ flexGrow: 1 }}>
+						<NavLink
+							to="/wine"
+							className={isActive => !isActive ? classes.unselected : classes.active}
+						>{('WINE CATALOG').toUpperCase()}
 						</NavLink>
 					</Button>
 					<Button variant="h6" sx={{ flexGrow: 1 }}>
 						<NavLink
 							to="/404"
 							className={isActive => !isActive ? classes.unselected : classes.active}
-						>PAGE 404
+						>{('PAGE 404').toUpperCase()}
 						</NavLink>
 					</Button>
 				</Toolbar>
@@ -62,6 +70,7 @@ function Nav() {
 			<Switch>
 				<Route path="/" component={Home} exact/>
 				<Route path="/coffee" component={Coffee} exact/>
+				<Route path="/wine" component={WineShopAPI} exact/>
 				<Route path="/coffee/:coffeeId" component={CoffeeItem}/>
 				<Route path="/posts" component={Posts} exact/>
 				<Route path="/posts/:postId" component={PostItem}/>
