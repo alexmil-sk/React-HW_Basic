@@ -10,7 +10,7 @@ import Error from './Error.jsx';
 import Loader from './Loader.jsx';
 import useFetchData from './hooks/useFetchData.jsx';
 
-const WINE_API = 'https://api.sampleapis.com/wines/sparkling';
+const WINE_API = 'https://api.sampleapis.com/wines/whites';
 
 
 
@@ -83,15 +83,15 @@ export default function WineShopAPI() {
 				sx={{
 					display: 'inline-grid',
 					padding: '20px',
-					gridTemplateColumns: 'repeat(10,1fr)',
+					gridTemplateColumns: 'repeat(7,1fr)',
 					margin: '40px auto',
 					boxShadow: (!loading && !error) ? '0 0 15px 5px #9C27B0' : null,
 				}}
 			>
-				{
-					!loading && data.length > 0 &&
-					data.map(wineItem => <WineList wineItem={wineItem} />)
-				}
+					{
+						!loading && data.length > 0 &&
+					data.map(wineItem => <WineList wineItem={wineItem}/>)
+					}
 			</Box>
 
 		</Box>

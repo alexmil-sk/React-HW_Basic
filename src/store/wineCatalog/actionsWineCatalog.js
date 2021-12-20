@@ -47,10 +47,10 @@ export const getWineCatalogThunk = async (dispatch) => {
 			throw new Error(`Request failed with status ${response.status}`)
 		}
 		const result = await response.json();
-
+		console.error(result);
 		dispatch(setData(result))
 	} catch (err) {
-		console.error(err);
+		console.log(err);
 		dispatch(setError(true));
 	} finally {
 		console.log('cleanup');

@@ -1,6 +1,7 @@
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 import { messageReducer  } from './messages/reducerMsgForm.js';
 import { chatReducer } from './chats/reducerChats.js';
+import { reducerWineCatalog } from './wineCatalog/reducerWineCatalog.js';
 import thunk from 'redux-thunk';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // localStorage
@@ -16,7 +17,8 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
 	messages: messageReducer,
-		chats: chatReducer
+	chats: chatReducer,
+	wineCatalog: reducerWineCatalog
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

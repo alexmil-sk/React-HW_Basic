@@ -19,10 +19,11 @@ function useFetchData(url) {
 				throw new Error(`Request failed with status ${response.status}`)
 			}
 			const result = await response.json();
+			console.log(result);
 
 			setData(result);
 		} catch (err) {
-			console.error(err);
+			console.log(err);
 			setError(true);
 		} finally {
 			console.log('cleanup');

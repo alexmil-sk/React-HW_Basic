@@ -4,7 +4,8 @@ import { Divider, Typography, Box, Card, CardContent, CardMedia } from '@mui/mat
 
 export default function WineList({ wineItem }) {
 	return (
-		<Card sx={{
+		<Card
+			sx={{
 			maxWidth: 110,
 			backgroundColor: 'hsl(37, 60%, 92%)',
 			boxShadow: '0 0 10px 2px hsl(35, 100%, 55%)',
