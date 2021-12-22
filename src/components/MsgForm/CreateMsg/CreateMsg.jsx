@@ -20,9 +20,6 @@ function CreateMsg({ initialValues, onSave, msgList}) {
 		image: ''
 	})
 
-
-
-
 	const msgReset = useCallback(() => {
 		setMsgValue({
 			id: '',

@@ -10,14 +10,19 @@ import PostItem from '../../Posts/PostItem/PostItem.jsx';
 import NotFound from '../../NotFound/NotFound.jsx';
 import Profile from '../../Profile/Profile.jsx';
 import Home from '../../Home/Home.jsx';
+import Registration from '../../FireBaseComp/Registration.jsx';
+import Login from '../../FireBaseComp/Login.jsx';
 import { NavLink, Switch, Route } from 'react-router-dom';
 import { AppBar, Toolbar, Button, Box, } from '@mui/material';
 
 
-function Nav() {
+function Nav({ show }) {
 	return (
 		<Box sx={{ flexGrow: 1 }}>
-			<AppBar position="static">
+			
+			{show ? <AppBar
+				position="static"
+			>
 				<Toolbar>
 					<Button
 						variant="h6"
@@ -67,6 +72,7 @@ function Nav() {
 					</Button>
 				</Toolbar>
 			</AppBar>
+				: null}
 			<Switch>
 				<Route path="/" component={Home} exact/>
 				<Route path="/coffee" component={Coffee} exact/>
@@ -75,12 +81,13 @@ function Nav() {
 				<Route path="/posts" component={Posts} exact/>
 				<Route path="/posts/:postId" component={PostItem}/>
 				<Route path="/chats" component={Chats}/>
-				<Route path="/profile" component={Profile} />
+				<Route path="/profile" component={Profile} exact/>
+				<Route path="/login" component={Login} />
+				<Route path="/registration" component={Registration} />
 				<Route path="/posts/:postId/comments" component={Comments} />
-				<Route path={["/*", "/chats/:chatId/*", "/chats/*", "/posts/:postId/*", "/posts/*", "/messages/*", "/coffee/:coffeeId/*", "/coffee/*"]} component={NotFound} />
+				<Route path={["/*", "/chats/:chatId/*", "/chats/*", "/posts/:postId/*", "/posts/*", "/messages/*", "/coffee/:coffeeId/*", "/coffee/*", "/profile/*"]} component={NotFound} />
 			</Switch>
 		</Box>
 	)
 }
-//"/*", "/chats/:chatId/*", "/chats/*"
 export default Nav;

@@ -51,6 +51,7 @@ function Profile() {
 				</AppBar>
 			</Box>
 			<Typography sx={{ textAlign: 'center' }} variant="h2" color="secondary">PROFILE</Typography>
+
 			<Switch>
 				<Route path="/profile/favorites" component={Favorites} />
 				<Route path="/profile/help" component={Help} />
