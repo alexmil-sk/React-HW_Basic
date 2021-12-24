@@ -25,7 +25,7 @@ function Login() {
 
 
 		try {
-			await auth.signInWithEmailAndPassword(email, password);
+			await auth().signInWithEmailAndPassword(email, password);
 			push('./profile');
 		} catch {
 			setError();

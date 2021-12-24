@@ -22,15 +22,14 @@ function Registration() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-
+		setError("");
 		try {
-			await auth.createUserWithEmailAndPassword(email, password);
+			await auth().createUserWithEmailAndPassword(email, password);
 			push('/profile');
 		} catch (e) {
 			setError(e.message);
 		}
 	};
-
 
 	return (
 		<Box
