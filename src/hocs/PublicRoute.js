@@ -13,7 +13,7 @@ export function PublicRoute({
 	}
 	/>
 	) : (<Redirect
-		to={{ pathname: "/profile" }}
+		to={{ pathname: "/" }}
 	/>
 	);
 
