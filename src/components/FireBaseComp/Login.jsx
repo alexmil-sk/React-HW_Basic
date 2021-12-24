@@ -21,14 +21,12 @@ function Login() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log(email, password);
-
 
 		try {
-			await auth().signInWithEmailAndPassword(email, password);
-			push('./profile');
-		} catch {
-			setError();
+			await auth.signInWithEmailAndPassword(email, password);
+			//push('/');
+		} catch (error) {
+			setError(error.message);
 		}
 	}
 

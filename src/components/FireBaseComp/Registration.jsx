@@ -24,10 +24,11 @@ function Registration() {
 		e.preventDefault();
 		setError("");
 		try {
-			await auth().createUserWithEmailAndPassword(email, password);
-			push('/profile');
-		} catch (e) {
-			setError(e.message);
+			await auth.createUserWithEmailAndPassword(email, password);
+
+			//push('/');
+		} catch (error) {
+			setError(error.message);
 		}
 	};
 

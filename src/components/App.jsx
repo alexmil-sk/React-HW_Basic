@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import classes from './App.module.css';
 import Header from './Header/Header.jsx';
-//import { NavLink, Switch, Route } from 'react-router-dom';
 import { ThemeProvider, createTheme, Container} from '@mui/material';
 import { ToggleContext, getMode, SwitchLight } from '../myScripts/myScripts.js';
 
@@ -27,10 +26,7 @@ function App() {
 					<Header
 						SwitchLight={SwitchLight}
 					/>
-					<div
-						className={classes.wrapper}
-					>
-					</div>
+					<div className={classes.wrapper}></div>
 				</Container>
 			</ThemeProvider>
 		</ToggleContext.Provider>
