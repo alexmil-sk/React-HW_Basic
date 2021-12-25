@@ -13,7 +13,7 @@ function FormLogIn({ handleSubmit, handleEmailChange, handlePassChange, error })
 			}}
 			Validate
 			autoComplete="off"
-			onSubmit={handleSubmit}
+			//onSubmit={handleSubmit}
 		>
 			<div>
 				<TextField
@@ -41,7 +41,8 @@ function FormLogIn({ handleSubmit, handleEmailChange, handlePassChange, error })
 				className={classes.btnFormElem}
 				variant="contained"
 				type="submit"
-			>Log In
+				onClick={handleSubmit}
+			>Send
 			</Button>
 		</Box>
 	)

@@ -9,14 +9,8 @@ export const LOGOUT_USER = 'LOGOUT_USER';
 
 //*----------------------------------------------------------------
 
-const initialState = {
-	user: null
-};
-
-//*----------------------------------------------------------------
-
-export const getUser = (state) => state.auth.user;
-export const getIsAuth = (state) => state.auth.user !== null;
+export const getUser = (state) => state.user.user;
+export const getIsAuth = (state) => state.user.user !== null;
 
 //*----------------------------------------------------------------
 
@@ -38,6 +32,13 @@ export const initAuthAction = (dispatch) => {
 		}
 	});
 };
+
+//*----------------------------------------------------------------
+
+const initialState = {
+	user: null
+};
+
 //*----------------------------------------------------------------
 
 export const userReducer = (state = initialState, action) => {

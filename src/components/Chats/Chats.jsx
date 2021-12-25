@@ -1,7 +1,6 @@
 import React from 'react';
 import classes from './Chats.module.css';
 import { Container, Box, Typography, Button } from '@mui/material';
-import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import ChatsList from './ChatsList/ChatsList.jsx';
 import {chatsHOC} from '../../hocs/chatsHOC.js';
@@ -9,7 +8,7 @@ import {chatsHOC} from '../../hocs/chatsHOC.js';
 
 
 
-export function ChatsRender({ chats, addUserChat, deleteUserChat, addAllChats}) {
+export function ChatsRender({ chats, addUserChat, deleteUserChat}) {
 	
 
 
@@ -43,18 +42,6 @@ export function ChatsRender({ chats, addUserChat, deleteUserChat, addAllChats}) 
 								onClick={addUserChat}
 							>
 								<PersonAddAltIcon
-									fontSize="large"
-									color="inherit"
-								/>
-							</Button>
-							<Button
-								className={classes.addAllBtn}
-								variant="contained"
-								color="secondary"
-								size="small"
-								onClick={(e) => addAllChats(e)}
-							>
-								<GroupAddIcon
 									fontSize="large"
 									color="inherit"
 								/>

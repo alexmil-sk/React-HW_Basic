@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getIsAuth, initAuthAction } from '../../../store/user/reducerAuth.js';
+import { PublicRoute } from '../../../hocs/PublicRoute.js';
+import { PrivateRoute } from '../../../hocs/PrivateRoute.js';
 import classes from './Nav.module.css';
 import Coffee from '../../Coffee/Coffee.jsx';
 import WineShopAPI from '../../WineShopAPI/WineShopAPI.jsx';
 import CoffeeItem from '../../Coffee/CoffeeItem/CoffeeItem.jsx';
 import Comments from '../../Comments/Comments.jsx';
-import {Chats} from '../../Chats/Chats.jsx';
+import { Chats } from '../../Chats/Chats.jsx';
 import Posts from '../../Posts/Posts.jsx';
 import PostItem from '../../Posts/PostItem/PostItem.jsx';
 import NotFound from '../../NotFound/NotFound.jsx';
@@ -17,9 +21,17 @@ import { AppBar, Toolbar, Button, Box, } from '@mui/material';
 
 
 function Nav({ show }) {
+
+	const isAuth = useSelector(getIsAuth);
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(initAuthAction);
+	}, []);
+
 	return (
 		<Box sx={{ flexGrow: 1 }}>
-			
+
 			{show ? <AppBar
 				position="static"
 			>
@@ -74,20 +86,44 @@ function Nav({ show }) {
 			</AppBar>
 				: null}
 			<Switch>
-				<Route path="/" component={Home} exact/>
-				<Route path="/coffee" component={Coffee} exact/>
-				<Route path="/wine" component={WineShopAPI} exact/>
-				<Route path="/coffee/:coffeeId" component={CoffeeItem}/>
-				<Route path="/posts" component={Posts} exact/>
-				<Route path="/posts/:postId" component={PostItem}/>
-				<Route path="/chats" component={Chats}/>
-				<Route path="/profile" component={Profile} exact/>
-				<Route path="/login" component={Login} />
-				<Route path="/registration" component={Registration} />
-				<Route path="/posts/:postId/comments" component={Comments} />
-				<Route path={["/*", "/chats/:chatId/*", "/chats/*", "/posts/:postId/*", "/posts/*", "/messages/*", "/coffee/:coffeeId/*", "/coffee/*", "/profile/*"]} component={NotFound} />
-			</Switch>
-		</Box>
+				<PrivateRoute auth={isAuth} exact path="/">
+					<Home />
+				</PrivateRoute>
+				<PrivateRoute auth={isAuth} exact path="/coffee">
+					<Coffee />
+				</PrivateRoute>
+				<PrivateRoute auth={isAuth} exact path="/wine">
+					<WineShopAPI />
+				</PrivateRoute>
+				<PrivateRoute auth={isAuth} path="/coffee/:coffeeId">
+					<CoffeeItem />
+				</PrivateRoute>
+				<PrivateRoute auth={isAuth} exact path="/posts">
+					<Posts />
+				</PrivateRoute>
+				<PrivateRoute auth={isAuth} path="/posts/:postId">
+					<PostItem />
+				</PrivateRoute>
+				<PrivateRoute auth={isAuth} path="/posts/:postId/comments">
+					<Comments />
+				</PrivateRoute>
+				<PrivateRoute auth={isAuth} path="/chats">
+					<Chats />
+				</PrivateRoute>
+				<PrivateRoute auth={isAuth} exact path="/profile">
+					<Profile />
+				</PrivateRoute>
+				<PublicRoute auth={isAuth} path="/login">
+					<Login />
+				</PublicRoute>
+				<PublicRoute auth={isAuth} path="/registration">
+					<Registration />
+				</PublicRoute>
+				<PrivateRoute auth={isAuth} path={["/*", "/chats/:chatId/*", "/chats/*", "/posts/:postId/*", "/posts/*", "/messages/*", "/coffee/:coffeeId/*", "/coffee/*", "/profile/*"]}>
+					<NotFound />
+				</PrivateRoute>
+		</Switch>
+		</Box >
 	)
 }
 export default Nav;

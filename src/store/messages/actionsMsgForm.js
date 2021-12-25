@@ -1,3 +1,5 @@
+import { msgsRef } from '../../firebase/firebase.js';
+
 export const CREATE_MSG = "CREATE_MSG";
 export const DELETE_MSG_BY_CHAT = "DELETE_MSG_BY_CHAT";
 
@@ -18,16 +20,61 @@ export const createMessage = (message, chatId) => ({
 	}
 });
 
+//!_Добавление сообщений в firebase
+export const addMsgToFb = (message, chatId) => () => {
+	msgsRef.child(chatId).push(message);
+}
+//!--------------------------------------------
+
+//!_Добавление сообщений в Redux из firebase
+export const onTrackingAddedMsgRedux = (chatId) => (dispatch) => {
+	msgsRef.child(chatId).on('child_added', (snapshot) => {
+		dispatch(createMessage({
+			...snapshot.vai(),
+			id: snapshot.key
+		}), chatId);
+	});
+};
+
+export const offTrackingAddedMsgRedux = (chatId) => () => {
+	msgsRef.child(chatId).off('child_added');
+}
+//!-------------------------------------
+
+
+
 /**
  * @param {Object} message
  * @param {string} message.id
  */
+
 
 export const deleteMessageByChat = (chatId) => ({
 	type: DELETE_MSG_BY_CHAT,
 	payload: chatId
 });
 
+//!Удаление сообщений из firebase
+export const deleteMsgFromFb = (chatId) => (dispatch) => {
+	msgsRef.child(chatId).remove(() => { 
+		dispatch(deleteMessageByChat(chatId))
+	});
+}
+//!----------------------------
+
+//!_Удаление сообщений в Redux
+
+export const onTrackingDeletedMsgRedux = (chatId) => (dispatch) => {
+	msgsRef.child(chatId).on('child_removed', () => {
+		dispatch(deleteMessageByChat(chatId));
+	});
+};
+
+export const offTrackingDeletedMsgRedux = (chatId) => () => {
+	msgsRef.child(chatId).off('child_removed');
+};
+
+//!---------------------------
 
 export const addRobotMsgThunk = (message, chatId) =>
 
