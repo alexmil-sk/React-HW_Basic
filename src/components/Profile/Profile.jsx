@@ -12,7 +12,7 @@ import ReactJson from 'react-json-view';
 
 function Profile() {
 
-	const user = useSelector(getUser);
+	//const user = useSelector(getUser);
 
 	return (
 		<div>
@@ -55,7 +55,7 @@ function Profile() {
 				</AppBar>
 			</Box>
 			<Typography sx={{ textAlign: 'center' }} variant="h2" color="secondary">PROFILE</Typography>
-			<ReactJson src={user.toJSON()}/>
+			{/* <ReactJson src={user.toJSON()}/> */}
 			<Switch>
 				<Route path="/profile/favorites" component={Favorites} />
 				<Route path="/profile/help" component={Help} />
