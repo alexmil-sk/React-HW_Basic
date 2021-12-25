@@ -9,7 +9,7 @@ import {
 	onTrackingAddedMsgRedux,
 	offTrackingAddedMsgRedux,
 	onTrackingDeletedMsgRedux,
-	offTrackingDeletedMsgRedux
+	offTrackingDeletedMsgRedux,
 } from '../store/messages/actionsMsgForm.js';
 
 
@@ -22,10 +22,6 @@ export const messagesHOC = (Component) => {
 	const msgList = useSelector(getMsgId(chatId));
 	//const isChat = useSelector(compareById(chatId));
 
-	//const onSave = (value) => {
-	//	dispatch(addRobotMsgThunk(value, chatId));
-	//} 
-
 	//!_Добавление сообщений в firebase
 	const onSave = (value) => {
 		dispatch(addRobotMsgThunk(value, chatId));
@@ -37,12 +33,13 @@ export const messagesHOC = (Component) => {
 	useEffect(() => {
 		dispatch(onTrackingAddedMsgRedux);
 		dispatch(onTrackingDeletedMsgRedux);
+		//dispatch(onTrackingAddedRobotMsgRedux);
 		return () => {
 			//!_Отписка от получения сообщений из firebase в Redux
 			dispatch(offTrackingAddedMsgRedux);
 			dispatch(offTrackingDeletedMsgRedux);
 		}
-	}, [])
+	}, [dispatch])
 		
 		return <Component
 			{...props}

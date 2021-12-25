@@ -58,7 +58,7 @@
 
 .msgForm {
 	display: flex;
-	width: 528px;
+	max-width: 740px!important;
 	align-items: center;
 	height: auto;
 	box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5)!important;

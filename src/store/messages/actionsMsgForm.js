@@ -29,10 +29,11 @@ export const addMsgToFb = (message, chatId) => () => {
 //!_Добавление сообщений в Redux из firebase
 export const onTrackingAddedMsgRedux = (chatId) => (dispatch) => {
 	msgsRef.child(chatId).on('child_added', (snapshot) => {
+		console.log(snapshot, snapshot.val(), snapshot.key);
 		dispatch(createMessage({
-			...snapshot.vai(),
+			...snapshot.val(),
 			id: snapshot.key
-		}), chatId);
+		}, chatId));
 	});
 };
 
@@ -40,8 +41,6 @@ export const offTrackingAddedMsgRedux = (chatId) => () => {
 	msgsRef.child(chatId).off('child_added');
 }
 //!-------------------------------------
-
-
 
 /**
  * @param {Object} message
@@ -95,7 +94,6 @@ export const addRobotMsgThunk = (message, chatId) =>
 			image
 		})
 		dispatch(createMessage(message, chatId))
-
 		if (message.id === undefined) {
 			botMessage = haveBotMessage({
 				idx: Date.now(),
@@ -121,7 +119,14 @@ export const addRobotMsgThunk = (message, chatId) =>
 				image: 'https://img2.freepng.ru/20180804/pso/kisspng-mobile-robot-stock-photography-image-illustration-%D8%AF%D8%B1%D8%A8%D8%A7%D8%B1%D9%87-%D9%85%D8%A7-%D8%B4%D8%B1%DA%A9%D8%AA-%D8%A2%D8%B1%D8%B3%D8%B3-5b65f6073773d3.7988520615334087752271.jpg'
 			})
 		}
-		const timer = setTimeout(() => dispatch(createMessage(botMessage, chatId)), 
-			1500);
-		return () => {clearTimeout(timer)}; 
+		//!_Добавление Robot сообщений в Redux
+		const timer1 = setTimeout(() => dispatch(createMessage(botMessage, chatId)), 1500);
+
+		//!_Добавление Robot сообщений в firebase
+		const timer2 = setTimeout(() => dispatch(addMsgToFb(botMessage, chatId)), 1500);
+		
+		return () => {clearTimeout(timer1, timer2)}; 
 	}
+
+
+
