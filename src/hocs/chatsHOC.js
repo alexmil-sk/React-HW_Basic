@@ -14,11 +14,6 @@ import {
 	useDispatch
 } from "react-redux";
 import {
-	createChat,
-	deleteChat,
-	addChats
-} from '../store/chats/actionsChats.js';
-import {
 	deleteMessageByChat
 } from '../store/messages/actionsMsgForm.js';
 import {
@@ -29,6 +24,7 @@ import {
 	offTrackingDeletedChatsRedux,
 	deleteChatFromFb
 } from '../store/chats/actionsChats.js';
+import { deleteMsgFromFb } from '../store/messages/actionsMsgForm.js';
 
 
 
@@ -70,7 +66,8 @@ export const chatsHOC = (Component) => {
 		const deleteUserChat = (e, chatId) => {
 			e.preventDefault();
 			dispatch(deleteChatFromFb(chatId));
-			dispatch(deleteMessageByChat(chatId))
+			dispatch(deleteMsgFromFb(chatId))
+			//dispatch(deleteMessageByChat(chatId))
 		}
 
 		//!_Получение чатов из firebase в Redux

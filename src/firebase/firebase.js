@@ -16,4 +16,12 @@ firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth();
 export const db = firebase.database();
 export const rootRef = db.ref('root');
+
+//*_Вариант вложенности каталога сообщений в чаты (при удалении чата сообщения удаляются)
 export const chatsRef = rootRef.child('chats');
+export const msgsRef = rootRef.child('chats');
+
+//*_Вариант разнесения каталога чатов и сообщений (при удалении чата сообщения не удаляются)
+//export const chatsRef = db.ref('chats');
+//export const msgsRef = db.ref('messsages');
+
