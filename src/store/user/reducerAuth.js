@@ -22,7 +22,7 @@ export const logoutUserAction = () => ({
 });
 
 export const initAuthAction = (dispatch) => {
-	auth().onAuthStateChanged((user) => {
+	auth.onAuthStateChanged((user) => {
 		if (user) {
 			dispatch(loginUserAction(user));
 		} else {
