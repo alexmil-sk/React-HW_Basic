@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useSelector } from 'react';
 import classes from './Profile.module.css';
 import Favorites from './Favorites/Favorites.jsx';
 import Help from './Help/Help.jsx';
@@ -6,9 +6,13 @@ import UserInfo from './UserInfo/UserInfo.jsx';
 import NotFound from '../NotFound/NotFound.jsx';
 import { NavLink, Switch, Route } from 'react-router-dom';
 import { AppBar, Toolbar, Button, Box, Typography } from '@mui/material';
+import { getUser } from '../../store/user/reducerAuth.js';
+import ReactJson from 'react-json-view';
 
 
 function Profile() {
+
+	//const user = useSelector(getUser);
 
 	return (
 		<div>
@@ -51,6 +55,7 @@ function Profile() {
 				</AppBar>
 			</Box>
 			<Typography sx={{ textAlign: 'center' }} variant="h2" color="secondary">PROFILE</Typography>
+			{/* <ReactJson src={user.toJSON()}/> */}
 			<Switch>
 				<Route path="/profile/favorites" component={Favorites} />
 				<Route path="/profile/help" component={Help} />

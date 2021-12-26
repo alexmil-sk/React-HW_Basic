@@ -1,3 +1,5 @@
+import { msgsRef } from '../../firebase/firebase.js';
+
 export const CREATE_MSG = "CREATE_MSG";
 export const DELETE_MSG_BY_CHAT = "DELETE_MSG_BY_CHAT";
 
@@ -18,16 +20,60 @@ export const createMessage = (message, chatId) => ({
 	}
 });
 
+//!_Добавление сообщений в firebase
+export const addMsgToFb = (message, chatId) => () => {
+	msgsRef.child(chatId).push(message);
+}
+//!--------------------------------------------
+
+//!_Добавление сообщений в Redux из firebase
+export const onTrackingAddedMsgRedux = (chatId) => (dispatch) => {
+	msgsRef.child(chatId).on('child_added', (snapshot) => {
+		console.log(snapshot, snapshot.val(), snapshot.key);
+		dispatch(createMessage({
+			...snapshot.val(),
+			id: snapshot.key
+		}, chatId));
+	});
+};
+
+export const offTrackingAddedMsgRedux = (chatId) => () => {
+	msgsRef.child(chatId).off('child_added');
+}
+//!-------------------------------------
+
 /**
  * @param {Object} message
  * @param {string} message.id
  */
+
 
 export const deleteMessageByChat = (chatId) => ({
 	type: DELETE_MSG_BY_CHAT,
 	payload: chatId
 });
 
+//!Удаление сообщений из firebase
+export const deleteMsgFromFb = (chatId) => (dispatch) => {
+	msgsRef.child(chatId).remove(() => { 
+		dispatch(deleteMessageByChat(chatId))
+	});
+}
+//!----------------------------
+
+//!_Удаление сообщений в Redux
+
+export const onTrackingDeletedMsgRedux = (chatId) => (dispatch) => {
+	msgsRef.child(chatId).on('child_removed', () => {
+		dispatch(deleteMessageByChat(chatId));
+	});
+};
+
+export const offTrackingDeletedMsgRedux = (chatId) => () => {
+	msgsRef.child(chatId).off('child_removed');
+};
+
+//!---------------------------
 
 export const addRobotMsgThunk = (message, chatId) =>
 
@@ -48,7 +94,6 @@ export const addRobotMsgThunk = (message, chatId) =>
 			image
 		})
 		dispatch(createMessage(message, chatId))
-
 		if (message.id === undefined) {
 			botMessage = haveBotMessage({
 				idx: Date.now(),
@@ -74,7 +119,14 @@ export const addRobotMsgThunk = (message, chatId) =>
 				image: 'https://img2.freepng.ru/20180804/pso/kisspng-mobile-robot-stock-photography-image-illustration-%D8%AF%D8%B1%D8%A8%D8%A7%D8%B1%D9%87-%D9%85%D8%A7-%D8%B4%D8%B1%DA%A9%D8%AA-%D8%A2%D8%B1%D8%B3%D8%B3-5b65f6073773d3.7988520615334087752271.jpg'
 			})
 		}
-		const timer = setTimeout(() => dispatch(createMessage(botMessage, chatId)), 
-			1500);
-		return () => {clearTimeout(timer)}; 
+		//!_Добавление Robot сообщений в Redux
+		const timer1 = setTimeout(() => dispatch(createMessage(botMessage, chatId)), 1500);
+
+		//!_Добавление Robot сообщений в firebase
+		const timer2 = setTimeout(() => dispatch(addMsgToFb(botMessage, chatId)), 1500);
+		
+		return () => {clearTimeout(timer1, timer2)}; 
 	}
+
+
+

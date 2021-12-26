@@ -2,7 +2,6 @@ import React, { useState, useRef, useCallback, useEffect } from 'react';
 import classes from '../MsgForm.module.css';
 import '../MsgFormAnime.css';
 import { useSelector } from "react-redux";
-//import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { TextField, Container, Box, IconButton, Badge, Typography, Button, containerClasses } from '@mui/material';
 import MessageIcon from '@mui/icons-material/Message';
 
@@ -19,9 +18,6 @@ function CreateMsg({ initialValues, onSave, msgList}) {
 		body: '',
 		image: ''
 	})
-
-
-
 
 	const msgReset = useCallback(() => {
 		setMsgValue({
