@@ -35,10 +35,3 @@ describe('CreateMsg component', () => {
 	});
 
 });
-
-// act(() => {
-// 	fireEvent.click(component.queryByTestId(CreateMsgTestIds.onSubmit));
-// });
-
-// expect(onSave).toBeCalled();
-// 	});
