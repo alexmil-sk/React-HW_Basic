@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react';
-import CreateMsg, { testVariables} from './CreateMsg.jsx';
+import { render, screen, fireEvent, act } from '@testing-library/react';
+import CreateMsg, { CreateMsgTestIds } from './CreateMsg.jsx';
 
 const onSave = jest.fn();
 const msgList = [1, 2, 3, 4];
@@ -17,8 +17,9 @@ describe('CreateMsg component', () => {
 
 		expect(screen.getByRole('button')).toBeInTheDocument();
 	});
-	it('CreateMsg will render', () => {
-		render(
+	it('onSubmitForm click returns msgList', () => {
+
+		const component = render(
 			<CreateMsg
 				initialValues=""
 				onSave={onSave}
@@ -26,6 +27,18 @@ describe('CreateMsg component', () => {
 			/>
 		);
 
-		expect(screen.getByRole('button')).toBeInTheDocument();
+		act(() => {
+			fireEvent.click(component.getByTestId('submit'));
+		});
+
+		expect(msgList.length !== 0).toBeTruthy();
 	});
+
 });
+
+// act(() => {
+// 	fireEvent.click(component.queryByTestId(CreateMsgTestIds.onSubmit));
+// });
+
+// expect(onSave).toBeCalled();
+// 	});

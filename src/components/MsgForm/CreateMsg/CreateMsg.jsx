@@ -1,12 +1,12 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import classes from '../MsgForm.module.css';
 import '../MsgFormAnime.css';
-import { useSelector } from "react-redux";
-import { TextField, Container, Box, IconButton, Badge, Typography, Button, containerClasses } from '@mui/material';
+import { TextField, Container, Box, Badge, Typography, Button,} from '@mui/material';
 import MessageIcon from '@mui/icons-material/Message';
 
-const testVariables = {
-	testId: "TextFieldId"
+export const CreateMsgTestIds = {
+	testId: "TextFieldId",
+	submit: "submit"
 }
 
 
@@ -88,7 +88,7 @@ function CreateMsg({ initialValues, onSave, msgList}) {
 							onSubmit={onSubmitForm}
 							className={classes.form}>
 							<TextField
-								data-testId={testVariables.testId}
+								data-testid="TextFieldId"
 								inputRef={inputIdRef}
 								className={classes.formElem}
 								type="text"
@@ -132,10 +132,11 @@ function CreateMsg({ initialValues, onSave, msgList}) {
 								rows={3}
 								onChange={onChange('body')}
 								label="Message's text"
-								placeholder="Message's text"
+								placeholder="Message's text"q
 								value={getMsgValueByName('body')}
 							/>
 							<Button
+								data-testid="submit"
 								onClick={onSubmitForm}
 								variant="contained"
 								className={classes.btn}
