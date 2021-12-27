@@ -24,6 +24,7 @@ function App() {
 			<ThemeProvider theme={theme}>
 				<Container sx={{ mt: 4, mb: 4, padding: '25px 0', border: '1px solid #9C27B0' }} color="secondary">
 					<Header
+						data-testId="header"
 						SwitchLight={SwitchLight}
 					/>
 					<div className={classes.wrapper}></div>

@@ -5,6 +5,9 @@ import { useSelector } from "react-redux";
 import { TextField, Container, Box, IconButton, Badge, Typography, Button, containerClasses } from '@mui/material';
 import MessageIcon from '@mui/icons-material/Message';
 
+const testVariables = {
+	testId: "TextFieldId"
+}
 
 
 function CreateMsg({ initialValues, onSave, msgList}) {
@@ -85,6 +88,7 @@ function CreateMsg({ initialValues, onSave, msgList}) {
 							onSubmit={onSubmitForm}
 							className={classes.form}>
 							<TextField
+								data-testId={testVariables.testId}
 								inputRef={inputIdRef}
 								className={classes.formElem}
 								type="text"
