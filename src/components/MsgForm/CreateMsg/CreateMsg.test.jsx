@@ -9,8 +9,18 @@ const msgList = [1, 2];
 
 
 describe('CreateMsg component', () => {
+	it('CreateMsg is rendering', () => {
+		render(
+			<CreateMsg
+				initialValues=""
+				onSave={onSave}
+				msgList={msgList}
+			/>
+		);
+		screen.debug();
+	});
 
-	it('CreateMsg will with buttonq', () => {
+	it('CreateMsg will with button', () => {
 		render(
 			<CreateMsg
 				initialValues=""
