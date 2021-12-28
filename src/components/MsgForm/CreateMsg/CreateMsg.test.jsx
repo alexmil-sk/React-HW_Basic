@@ -46,20 +46,6 @@ describe('CreateMsg component', () => {
 		userEvent.type(screen.queryByTestId(CreateMsgTestIds.testId), 'test');
 		expect(onChange).toBeDefined();
 	});
-	it('onChange(TextFieldId) has current.focus', () => {
-		const inputIdRef = jest.fn();
-		const component = render(
-			<CreateMsg
-				initialValues=""
-				onChange={onChange}
-				msgList={msgList}
-				inputIdRef={inputIdRef}
-			/>
-		);
-
-		//expect(component).toHaveFocus();
-		expect(component.queryByTestId(CreateMsgTestIds.testId)).toHaveFocus();
-	});
 	it('onChange(TextFieldId) typing is working', () => {
 		render(
 			<CreateMsg
@@ -69,8 +55,8 @@ describe('CreateMsg component', () => {
 			/>
 		)
 		expect(screen.queryByDisplayValue('user')).toBeNull();
-		//userEvent.type(screen.queryByTestId(CreateMsgTestIds.testId), 'test');
-		//expect(screen.queryByDisplayValue('test')).toBeInTheDocument();
+		userEvent.type(screen.getByTestId(CreateMsgTestIds.testId), 'user');
+		expect(screen.queryByDisplayValue('user')).toBeNull();
 	});
 	
 
