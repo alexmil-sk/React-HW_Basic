@@ -68,7 +68,16 @@ describe('CreateMsg component', () => {
 		userEvent.type(screen.getByTestId(CreateMsgTestIds.testId), 'user');
 		expect(screen.queryByDisplayValue('user')).toBeNull();
 	});
-	
+	it('onChange(TextFieldId) hasn`t required', () => {
+		render(
+			<CreateMsg
+				initialValues=""
+				onChange={onChange}
+				msgList={msgList}
+			/>
+		)
+		expect(screen.getByTestId(CreateMsgTestIds.testId)).not.toBeRequired();
+	});
 
 
 
