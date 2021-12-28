@@ -78,6 +78,16 @@ describe('CreateMsg component', () => {
 		)
 		expect(screen.getByTestId(CreateMsgTestIds.testId)).not.toBeRequired();
 	});
+	it('Button (onSubmitForm) has attribute data-testId', () => {
+		render(
+			<CreateMsg
+				initialValues=""
+				onChange={onChange}
+				msgList={msgList}
+			/>
+		)
+		expect(screen.queryByRole('button')).toHaveAttribute('data-testid');
+	});
 
 
 
