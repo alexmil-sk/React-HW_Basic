@@ -5,8 +5,8 @@ import { TextField, Container, Box, Badge, Typography, Button,} from '@mui/mater
 import MessageIcon from '@mui/icons-material/Message';
 
 export const CreateMsgTestIds = {
-	testId: "TextFieldId",
-	submit: "submit"
+	testId: "CreateMsg-TextFieldId",
+	submit: "CreateMsg-onSubmitFormBtn"
 }
 
 
@@ -88,7 +88,7 @@ function CreateMsg({ initialValues, onSave, msgList}) {
 							onSubmit={onSubmitForm}
 							className={classes.form}>
 							<TextField
-								data-testid="TextFieldId"
+								data-testid={CreateMsgTestIds.testId}
 								inputRef={inputIdRef}
 								className={classes.formElem}
 								type="text"
@@ -136,7 +136,7 @@ function CreateMsg({ initialValues, onSave, msgList}) {
 								value={getMsgValueByName('body')}
 							/>
 							<Button
-								data-testid="submit"
+								data-testid={CreateMsgTestIds.submit}
 								onClick={onSubmitForm}
 								variant="contained"
 								className={classes.btn}
