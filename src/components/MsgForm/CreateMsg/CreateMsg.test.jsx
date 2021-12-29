@@ -88,32 +88,4 @@ describe('CreateMsg component', () => {
 		)
 		expect(screen.queryByRole('button')).toHaveAttribute('data-testid');
 	});
-
-
-
-
-
-
-
-	//it('onChange(TextFieldId) is working', () => {
-	//	const inputValue = 'test';
-	//	const getMsgValueByName = jest.fn();
-	//
-	//	const component = render(
-	//		<CreateMsg
-	//			onChange={onChange}
-	//			getMsgValueByName={getMsgValueByName}
-	//			msgList={msgList}
-	//		/>
-	//	);
-	//
-	//	const TextFieldTestId = component.queryByTestId(CreateMsgTestIds.testId)
-	//
-	//	act(() => {
-	//		fireEvent.change(TextFieldTestId, { target: { value: inputValue} });
-	//	});
-	//
-	//	expect(onChange).toHaveBeenCalledWith(inputValue);
-	//});
-
 });

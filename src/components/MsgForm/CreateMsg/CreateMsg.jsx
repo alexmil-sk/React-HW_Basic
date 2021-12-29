@@ -6,6 +6,7 @@ import MessageIcon from '@mui/icons-material/Message';
 
 export const CreateMsgTestIds = {
 	testId: "CreateMsg-TextFieldId",
+	title: "CreateMsg-TextFieldTitle",
 	submit: "CreateMsg-onSubmitFormBtn"
 }
 
@@ -113,6 +114,7 @@ function CreateMsg({ initialValues, onSave, msgList}) {
 								value={getMsgValueByName('image')}
 							/>
 							<TextField
+								data-testid={CreateMsgTestIds.title}
 								className={classes.formElem}
 								type="text"
 								name="title"
