@@ -1,12 +1,5 @@
-import React from 'react';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-
 import {chatReducer} from './reducerChats.js';
 import { createChat, deleteChat, addChats} from './actionsChats.js';
-import chatsHOC from '../../hocs/chatsHOC.js';
 
 //*=================================================================
 
@@ -25,6 +18,20 @@ const chat = {
 	id: 123456
 };
 
+const newChats = [
+	{
+		name: 'Ivan',
+		id: 222222
+	},
+	{
+		name: 'Sergey',
+		id: 333333
+	},
+
+
+];
+
+const randomId = 111111;
 
 
 describe('chatReducer test', () => {
@@ -58,5 +65,25 @@ describe('chatReducer test', () => {
 
 		//,_Ожидание по результатам теста
 		expect(newState.chats.length).toBe(1);
+	});
+	it('checks random chatId not deleting of chat', () => {
+	//,Передача исходных данных в actionCreator
+	const action = deleteChat(randomId)
+
+	//,_Производим действие action
+	const newState = chatReducer(initialState, action);
+
+	//,_Ожидание по результатам теста
+	expect(newState.chats.length).toBe(1);
+	});
+	it('checks adding o chats group', () => {
+		//,Передача исходных данных в actionCreator
+		const action = addChats(newChats)
+
+		//,_Производим действие action
+		const newState = chatReducer(initialState, action);
+
+		//,_Ожидание по результатам теста
+		expect(newState.chats.length).toBe(3);
 	});
 });
