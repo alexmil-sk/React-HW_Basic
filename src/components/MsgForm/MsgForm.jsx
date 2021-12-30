@@ -9,7 +9,7 @@ import { messagesHOC } from '../../hocs/messagesHOC.js';
 
 
 
-function MsgFormRender({ msgList, onSave, isChat }) {
+export function MsgFormRender({ msgList, onSave, isChat }) {
 
 	// if (!isChat) {
 	// 	return <Redirect to="/404" />;
