@@ -35,12 +35,13 @@ function Nav({ show }) {
 			{show ? <AppBar
 				position="static"
 			>
-				<Toolbar>
+				<Toolbar data-testId="toolbar">
 					<Button
 						variant="h6"
 						sx={{ flexGrow: 1 }}
 					>
 						<NavLink
+							data-testId="home-link"
 							exact
 							to="/"
 							className={isActive => !isActive ? classes.unselected : classes.active}
@@ -49,6 +50,7 @@ function Nav({ show }) {
 					</Button>
 					<Button variant="h6" sx={{ flexGrow: 1 }}>
 						<NavLink
+							data-testId="posts-link"
 							to="/posts"
 							className={isActive => !isActive ? classes.unselected : classes.active}
 						>{('posts').toUpperCase()}
@@ -56,6 +58,7 @@ function Nav({ show }) {
 					</Button>
 					<Button variant="h6" sx={{ flexGrow: 1 }}>
 						<NavLink
+							data-testId="chats-link"
 							to="/chats"
 							className={isActive => !isActive ? classes.unselected : classes.active}
 						>{('chats').toUpperCase()}
